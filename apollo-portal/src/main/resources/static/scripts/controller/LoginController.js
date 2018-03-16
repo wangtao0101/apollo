@@ -6,10 +6,10 @@ function LoginController($scope, $window, $location, toastr, AppUtil) {
     if ($location.$$url) {
         var params = AppUtil.parseParams($location.$$url);
         if (params.error) {
-            $scope.info = "用户名或密码错误";
+            $scope.info = "Username or password is incorrect";
         }
         if (params.logout) {
-            $scope.info = "登出成功";
+            $scope.info = "Successfully logged out";
         }
     }
 

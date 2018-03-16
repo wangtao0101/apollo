@@ -85,7 +85,7 @@ function releaseHistoryController($scope, $location, AppUtil,
                 $scope.page = $scope.page + 1;
 
             }, function (result) {
-                AppUtil.showErrorMsg(result, "加载发布历史信息出错");
+                AppUtil.showErrorMsg(result, "An error has occurred while loading the historical release information");
             });
     }
 

@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html ng-app="setting">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" media='all' href="../vendor/angular/loading-bar.min.css">
     <link rel="stylesheet" type="text/css" href="../styles/common-style.css">
     <link rel="stylesheet" type="text/css" href="../vendor/select2/select2.min.css">
-    <title>项目管理</title>
+    <title>Project Management</title>
 </head>
 
 <body>
@@ -21,12 +21,12 @@
         <header class="panel-heading">
             <div class="row">
                 <div class="col-md-7">
-                    <h4 class="modal-title">项目管理 ( AppId:<label ng-bind="pageContext.appId"></label> )
+                    <h4 class="modal-title">Project Management ( AppId:<label ng-bind="pageContext.appId"></label> )
                     </h4>
                 </div>
                 <div class="col-md-5 text-right">
                     <a type="button" class="btn btn-info" data-dismiss="modal"
-                       href="/config.html?#appid={{pageContext.appId}}">返回到项目首页
+                       href="/config.html?#appid={{pageContext.appId}}">Return to Project Homepage
                     </a>
                 </div>
             </div>
@@ -37,9 +37,8 @@
             <section class="context" ng-show="hasAssignUserPermission">
                 <!--project admin-->
                 <section class="form-horizontal">
-                    <h5>管理员
-                        <small>
-                            (项目管理员具有以下权限: 1. 创建Namespace 2. 创建集群 3. 管理项目、Namespace权限)
+                    <h5>Administrators                        <small>
+                            (Project administrators are entitled with following permissions: 1. Create Namespace 2. Create clusters 3. Manage projects and Namespace permissions)
                         </small>
                     </h5>
                     <hr>
@@ -50,7 +49,7 @@
                                 <apollouserselector apollo-id="userSelectWidgetId"></apollouserselector>
                             </div>
                             <button type="submit" class="btn btn-default" style="margin-left: 20px;"
-                                    ng-disabled="submitBtnDisabled">添加
+                                    ng-disabled="submitBtnDisabled">Add
                             </button>
                         </form>
                         <!-- Split button -->
@@ -73,7 +72,7 @@
 
                 <!--application info-->
                 <section>
-                    <h5>基本信息</h5>
+                    <h5>Basic Information</h5>
                     <hr>
                     <form class="form-horizontal" name="appForm" valdr-type="App"
                           ng-submit="updateAppInfo()">
@@ -90,7 +89,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
                                 <apollorequiredfield></apollorequiredfield>
-                                部门</label>
+                                Department</label>
                             <div class="col-sm-3">
                                 <select id="organization" ng-disabled="!display.app.edit">
                                     <option></option>
@@ -101,17 +100,17 @@
                         <div class="form-group" valdr-form-group>
                             <label class="col-sm-2 control-label">
                                 <apollorequiredfield></apollorequiredfield>
-                                项目名称</label>
+                                Project Name</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="appName" ng-model="viewApp.name"
                                        ng-disabled="!display.app.edit">
-                                <small>(建议格式 xx-yy-zz 例:apollo-server)</small>
+                                <small>(Recommended Format xx-yy-zz For example:apollo-server)</small>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
                                 <apollorequiredfield></apollorequiredfield>
-                                项目负责人</label>
+                                Project Leader</label>
                             <div class="col-sm-6 J_ownerSelectorPanel">
                                 <apollouserselector apollo-id="'ownerSelector'"
                                                     disabled="!display.app.edit"></apollouserselector>
@@ -123,17 +122,16 @@
                                 <button type="button" class="btn btn-primary"
                                         ng-show="!display.app.edit"
                                         ng-click="toggleEditStatus()">
-                                    修改项目信息
+                                    Modify Project Information
                                 </button>
                                 <button type="button" class="btn btn-warning"
                                         ng-show="display.app.edit"
                                         ng-click="toggleEditStatus()">
-                                    取消修改
-                                </button>
+                                    Cancel the Modification                                </button>
                                 <button type="submit" class="btn btn-primary"
                                         ng-show="display.app.edit"
                                         ng-disabled="appForm.$invalid || submitBtnDisabled">
-                                    提交
+                                    Submit
                                 </button>
                             </div>
                         </div>
@@ -145,13 +143,13 @@
 
             <section class="context" ng-show="!hasAssignUserPermission">
                 <div class="panel-body text-center">
-                    <h4>您没有权限操作，请找 [{{admins.join(',')}}] 开通权限</h4>
+                    <h4>You have no permission to operate, please go to [{{admins.join(',')}}] Assign permission</h4>
                 </div>
             </section>
         </div>
 
-        <apolloconfirmdialog apollo-dialog-id="'warning'" apollo-title="'删除管理员'"
-                             apollo-detail="'不能删除所有的管理员'"
+        <apolloconfirmdialog apollo-dialog-id="'warning'" apollo-title="'Remove the administrator'"
+                             apollo-detail="'Unable to remove all administrators'"
                              apollo-show-cancel-btn="false"></apolloconfirmdialog>
     </section>
 </div>

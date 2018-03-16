@@ -37,7 +37,7 @@ function OpenManageController($scope, toastr, AppUtil, OrganizationService, Cons
                 organizations.push(org);
             });
             $orgWidget.select2({
-                                   placeholder: '请选择部门',
+                                   placeholder: 'Please select department',
                                    width: '100%',
                                    data: organizations
                                });
@@ -55,7 +55,7 @@ function OpenManageController($scope, toastr, AppUtil, OrganizationService, Cons
 
     function getTokenByAppId() {
         if (!$scope.consumer.appId) {
-            toastr.warning("请输入appId");
+            toastr.warning("Please enter appId");
             return;
         }
 
@@ -66,7 +66,7 @@ function OpenManageController($scope, toastr, AppUtil, OrganizationService, Cons
                     $scope.consumerToken = consumerToken;
                     $scope.consumerRole.token = consumerToken.token;
                 } else {
-                    $scope.consumerToken = {token: 'App(' + $scope.consumer.appId + ')未创建，请先创建'};
+                    $scope.consumerToken = {token: 'App(' + $scope.consumer.appId + ')Not created, please create first'};
                 }
             })
     }
@@ -75,13 +75,13 @@ function OpenManageController($scope, toastr, AppUtil, OrganizationService, Cons
         $scope.submitBtnDisabled = true;
 
         if (!$scope.consumer.appId) {
-            toastr.warning("请输入appId");
+            toastr.warning("Please enter appId");
             return;
         }
         var selectedOrg = $orgWidget.select2('data')[0];
 
         if (!selectedOrg.id) {
-            toastr.warning("请选择部门");
+            toastr.warning("Please select department");
             return;
         }
 
@@ -91,20 +91,20 @@ function OpenManageController($scope, toastr, AppUtil, OrganizationService, Cons
         // owner
         var owner = $('.ownerSelector').select2('data')[0];
         if (!owner) {
-            toastr.warning("请选择应用负责人");
+            toastr.warning("Please select application leader");
             return;
         }
         $scope.consumer.ownerName = owner.id;
 
         ConsumerService.createConsumer($scope.consumer)
             .then(function (consumerToken) {
-                toastr.success("创建成功");
+                toastr.success("Created Successfully");
                 $scope.consumerToken = consumerToken;
                 $scope.consumerRole.token = consumerToken.token;
                 $scope.submitBtnDisabled = false;
                 $scope.consumer = {};
             }, function (response) {
-                AppUtil.showErrorMsg(response, "创建失败");
+                AppUtil.showErrorMsg(response, "Creation Failed");
                 $scope.submitBtnDisabled = false;
             })
 
@@ -116,9 +116,9 @@ function OpenManageController($scope, toastr, AppUtil, OrganizationService, Cons
                                              $scope.consumerRole.appId,
                                              $scope.consumerRole.namespaceName)
             .then(function (consumerRoles) {
-                toastr.success("赋权成功");
+                toastr.success("Assignment succeeded");
             }, function (response) {
-                AppUtil.showErrorMsg(response, "赋权失败");
+                AppUtil.showErrorMsg(response, "Assignment failed");
             })
     }
     

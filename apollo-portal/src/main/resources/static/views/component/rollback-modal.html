@@ -7,15 +7,15 @@
                         aria-hidden="true">&times;</span></button>
                 <div class="modal-title text-center">
                     <span style="font-size: 18px;" ng-bind="toRollbackNamespace.firstRelease.name"></span>
-                    <span style="font-size: 18px;"> &nbsp;回滚到&nbsp;</span>
+                    <span style="font-size: 18px;"> &nbsp;Rollback to&nbsp;</span>
                     <span style="font-size: 18px;" ng-bind="toRollbackNamespace.secondRelease.name"></span>
                 </div>
             </div>
             <div class="modal-body">
                 <div class="alert alert-warning" role="alert">
-                    此操作将会回滚到上一个发布版本，且当前版本作废，但不影响正在修改的配置。可在发布历史页面查看当前生效的版本
+                    By doing this it will rollback to the last version released and cancel the current version, but will not affect configurations being modified. Current effective version can be viewed in the release history page.
                     <a target="_blank"
-                       href="/config/history.html?#/appid={{appId}}&env={{env}}&clusterName={{toRollbackNamespace.baseInfo.clusterName}}&namespaceName={{toRollbackNamespace.baseInfo.namespaceName}}">点击查看</a>
+                       href="/config/history.html?#/appid={{appId}}&env={{env}}&clusterName={{toRollbackNamespace.baseInfo.clusterName}}&namespaceName={{toRollbackNamespace.baseInfo.namespaceName}}">Click to view</a>
                 </div>
 
                 <div class="form-group" style="margin-top: 15px;">
@@ -33,10 +33,10 @@
                                     Key
                                 </th>
                                 <th>
-                                    回滚前
+                                    Before rollback
                                 </th>
                                 <th>
-                                    回滚后
+                                    After rollback
                                 </th>
                             </tr>
                             </thead>
@@ -44,9 +44,9 @@
 
                             <tr ng-repeat="change in toRollbackNamespace.releaseCompareResult">
                                 <td width="10%">
-                                    <span ng-show="change.type == 'ADDED'">新增</span>
-                                    <span ng-show="change.type == 'MODIFIED'">更新</span>
-                                    <span ng-show="change.type == 'DELETED'">删除</span>
+                                    <span ng-show="change.type == 'ADDED'">Add</span>
+                                    <span ng-show="change.type == 'MODIFIED'">Update</span>
+                                    <span ng-show="change.type == 'DELETED'">Delete</span>
                                 </td>
                                 <td width="20%" ng-bind="change.entity.firstEntity.key">
 
@@ -65,12 +65,12 @@
                          ng-if="toRollbackNamespace.releaseCompareResult.length > 0 && !toRollbackNamespace.isPropertiesFormat">
                         <div ng-repeat="change in toRollbackNamespace.releaseCompareResult"
                              ng-if="!toRollbackNamespace.isPropertiesFormat">
-                            <h5>回滚前</h5>
+                            <h5>Before rollback</h5>
                                         <textarea class="form-control no-radius" rows="20"
                                                   ng-disabled="true" ng-bind="change.entity.firstEntity.value">
                                             </textarea>
                             <hr>
-                            <h5>回滚后</h5>
+                            <h5>After rollback</h5>
                                         <textarea class="form-control no-radius" rows="20"
                                                   ng-disabled="true" ng-bind="change.entity.secondEntity.value">
                                             </textarea>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="col-sm-12 text-center" ng-if="toRollbackNamespace.releaseCompareResult.length == 0">
                         <h4>
-                            配置没有变化
+                            Configuration sees no changes
                         </h4>
                     </div>
                 </div>
@@ -87,9 +87,9 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-danger"
-                        ng-disabled="toRollbackNamespace.rollbackBtnDisabled">回滚
+                        ng-disabled="toRollbackNamespace.rollbackBtnDisabled">Rollback
                 </button>
             </div>
         </div>

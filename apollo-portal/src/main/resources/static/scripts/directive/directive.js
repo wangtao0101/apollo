@@ -81,7 +81,7 @@ directive_module.directive('apollonav',
                                                }
 
                                            }
-                                           //强制刷新
+                                           //Force Refresh
                                            scope.$apply(function () {
                                                scope.copiedApps = scope.copiedApps;
                                            });
@@ -211,7 +211,7 @@ directive_module.directive('apolloclusterselector', function ($compile, $window,
 
 });
 
-/** 必填项*/
+/** Required Field*/
 directive_module.directive('apollorequiredfield', function ($compile, $window) {
     return {
         restrict: 'E',
@@ -221,7 +221,7 @@ directive_module.directive('apollorequiredfield', function ($compile, $window) {
     }
 });
 
-/**  确认框 */
+/**  Confirmation Box */
 directive_module.directive('apolloconfirmdialog', function ($compile, $window, $sce) {
     return {
         restrict: 'E',
@@ -244,7 +244,7 @@ directive_module.directive('apolloconfirmdialog', function ($compile, $window, $
             });
 
             if (!scope.confirmBtnText) {
-                scope.confirmBtnText = '确认';
+                scope.confirmBtnText = 'Confirm';
             }
             
             scope.confirm = function () {

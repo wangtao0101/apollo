@@ -1,4 +1,4 @@
-<!doctype html >
+﻿<!doctype html >
 <html ng-app="release_history">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../vendor/angular/angular-toastr-1.4.1.min.css">
     <link rel="stylesheet" type="text/css" media='all' href="../vendor/angular/loading-bar.min.css">
     <link rel="stylesheet" type="text/css" href="../styles/common-style.css">
-    <title>发布历史</title>
+    <title>Release History</title>
 </head>
 
 <body>
@@ -22,27 +22,27 @@
             <div class="operation-caption-container col-md-3">
                 <div class="operation-caption release-operation-normal text-center"
                      style="left:0;">
-                    <small>主版本发布</small>
+                    <small>Major Release</small>
                 </div>
                 <div class="operation-caption release-operation-rollback text-center"
                      style="left: 80px;">
-                    <small>主版本回滚</small>
+                    <small>Major Rollback</small>
                 </div>
                 <div class="operation-caption release-operation-gray text-center"
                      style="left: 160px;">
-                    <small>灰度操作</small>
+                    <small>Gray Operation</small>
                 </div>
             </div>
 
             <div class="col-md-6 text-center">
-                <h4>发布历史</h4>
+                <h4>Release History</h4>
                 <small>(AppId:{{pageContext.appId}}, ENV:{{pageContext.env}}, Cluster:{{pageContext.clusterName}},
                     Namespace:{{pageContext.namespaceName}})
                 </small>
             </div>
 
             <div class="pull-right back-btn">
-                <a type="button" class="btn btn-info" href="/config.html?#/appid={{pageContext.appId}}">返回到项目首页
+                <a type="button" class="btn btn-info" href="/config.html?#/appid={{pageContext.appId}}">Return to Project Homepage
                 </a>
             </div>
 
@@ -64,27 +64,26 @@
                     </h4>
                     <div class="media-body">
 
-                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 0">普通发布</h5>
-                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 1">回滚</h5>
-                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 2">灰度发布</h5>
-                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 3">更新灰度规则</h5>
-                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 4">灰度全量发布</h5>
-                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 5">灰度发布(主版本发布)</h5>
-                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 6">灰度发布(主版本回滚)</h5>
-                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 7">放弃灰度</h5>
-                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 8">删除灰度(全量发布)</h5>
+                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 0">Average Release</h5>
+                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 1">Rollback</h5>
+                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 2">Gray Release</h5>
+                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 3">Renew the gray rules</h5>
+                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 4">Full dose release of gray</h5>
+                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 5">Gray Release(Major Release)</h5>
+                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 6">Gray Release(Major Rollback)</h5>
+                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 7">Discard gray</h5>
+                        <h5 class="col-md-7 word-break" ng-show="releaseHistory.operation == 8">Remove  gray(Full dose release)</h5>
 
                         <h6 class="col-md-5 text-right" ng-bind="releaseHistory.releaseTimeFormatted"></h6>
                         <span class="label label-warning no-radius emergency-publish"
-                              ng-if="releaseHistory.operationContext.isEmergencyPublish">紧急发布</span>
+                              ng-if="releaseHistory.operationContext.isEmergencyPublish">Emergent Release</span>
                     </div>
                 </div>
 
                 <div class="load-more media panel-heading text-center hover"
                      ng-show="!hasLoadAll"
                      ng-click="findReleaseHistory()">
-                    加载更多
-                </div>
+                    Load More                </div>
 
             </div>
 
@@ -104,13 +103,13 @@
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default btn-sm"
                                         ng-class="{'active':history.viewType == 'diff'}"
-                                        data-tooltip="tooltip" data-placement="bottom" title="查看此次发布与上次版本的变更"
-                                        ng-click="switchConfigViewType(history, 'diff')">变更的配置
+                                        data-tooltip="tooltip" data-placement="bottom" title="View the changes of this release over the last release"
+                                        ng-click="switchConfigViewType(history, 'diff')">Configuration Changed
                                 </button>
                                 <button type="button" class="btn btn-default btn-sm"
                                         ng-class="{'active':history.viewType == 'all'}"
-                                        data-tooltip="tooltip" data-placement="bottom" title="查看此次发布的所有配置信息"
-                                        ng-click="switchConfigViewType(history, 'all')">全部配置
+                                        data-tooltip="tooltip" data-placement="bottom" title="View all the configuraion information of this release"
+                                        ng-click="switchConfigViewType(history, 'all')">All COnfiguraion
                                 </button>
                             </div>
                         </div>
@@ -120,7 +119,7 @@
 
                 <div class="panel-body config">
                     <section ng-show="history.viewType=='diff'">
-                        <h4 class="section-title">变更的配置</h4>
+                        <h4 class="section-title">Configuration Changed</h4>
                         <div ng-show="history.changes && history.changes.length > 0">
                             <table class="no-margin table table-striped table-hover table-bordered">
                                 <thead>
@@ -134,9 +133,9 @@
                                 <tbody>
                                 <tr ng-repeat="change in history.changes">
                                     <td width="10%">
-                                        <span ng-show="change.type == 'ADDED'">新增</span>
-                                        <span ng-show="change.type == 'MODIFIED'">修改</span>
-                                        <span ng-show="change.type == 'DELETED'">删除</span>
+                                        <span ng-show="change.type == 'ADDED'">Add</span>
+                                        <span ng-show="change.type == 'MODIFIED'">Modify</span>
+                                        <span ng-show="change.type == 'DELETED'">Delete</span>
                                     </td>
                                     <td class="cursor-pointer" width="20%"
                                         ng-click="showText(change.entity.firstEntity.key)">
@@ -159,13 +158,13 @@
                         </div>
                         <div class="text-center empty-container"
                              ng-show="!history.changes || history.changes.length == 0">
-                            <h5>无配置更改</h5>
+                            <h5>No Configuration Changed</h5>
                         </div>
                     </section>
 
 
                     <section ng-show="history.viewType=='all'">
-                        <h4 class="section-title">全部配置</h4>
+                        <h4 class="section-title">All Configuration</h4>
                         <table class="no-margin table table-striped table-hover table-bordered"
                                ng-show="history.configuration && history.configuration.length > 0">
                             <thead>
@@ -189,20 +188,20 @@
                         </table>
                         <div class="text-center empty-container"
                              ng-show="history.viewType=='all' && (!history.configuration || history.configuration.length == 0)">
-                            <h5>无配置</h5>
+                            <h5>No Configuration</h5>
                         </div>
                     </section>
 
 
                     <section ng-show="history.branchName != history.clusterName && history.operation != 8 && history.operation != 7">
                         <hr>
-                        <h4 class="section-title">灰度规则</h4>
+                        <h4 class="section-title">Gray Rules</h4>
                         <table class="no-margin table table-striped table-hover table-bordered"
                                ng-show="history.operationContext.rules">
                             <thead>
                             <tr>
-                                <th>灰度的AppId</th>
-                                <th>灰度的IP</th>
+                                <th>Gray AppId</th>
+                                <th>Gray IP</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -213,7 +212,7 @@
                             </tbody>
                         </table>
                         <h5 class="text-center empty-container" ng-show="!history.operationContext.rules">
-                            无灰度规则
+                            No Gray Rules
                         </h5>
                     </section>
 
@@ -233,7 +232,7 @@
         </div>
 
         <div class="panel-body" ng-show="!releaseHistories || releaseHistories.length == 0">
-            <h4 class="text-center empty-container">无发布历史信息</h4>
+            <h4 class="text-center empty-container">No information on release history</h4>
         </div>
     </section>
 

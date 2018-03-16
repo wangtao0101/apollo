@@ -29,7 +29,7 @@ namespace_module.controller("LinkNamespaceController",
                                          publicNamespaces.push(namespace);
                                      });
                                      $('#namespaces').select2({
-                                                                  placeholder: '请选择Namespace',
+                                                                  placeholder: 'Please select Namespace',
                                                                   width: '100%',
                                                                   data: publicNamespaces
                                                               });
@@ -42,7 +42,7 @@ namespace_module.controller("LinkNamespaceController",
                                      $scope.appBaseInfo = result;
                                      $scope.appBaseInfo.namespacePrefix = result.orgId + '.';
                                  }, function (result) {
-                                     toastr.error(AppUtil.errorMsg(result), "加载App信息出错");
+                                     toastr.error(AppUtil.errorMsg(result), "An error has occurred while loading application information");
                                  });
 
                                  $scope.appNamespace = {
@@ -72,14 +72,14 @@ namespace_module.controller("LinkNamespaceController",
                                  $scope.createNamespace = function () {
                                      if ($scope.type == 'link') {
                                          if (selectedClusters.length == 0) {
-                                             toastr.warning("请选择集群");
+                                             toastr.warning("Please select colony");
                                              return;
                                          }
 
                                          if ($scope.namespaceType == 1) {
                                              var selectedNamespaceName = $('#namespaces').select2('data')[0].id;
                                              if (!selectedNamespaceName) {
-                                                 toastr.warning("请选择Namespace");
+                                                 toastr.warning("Please select Namespace");
                                                  return;
                                              }
 
@@ -101,7 +101,7 @@ namespace_module.controller("LinkNamespaceController",
                                          $scope.submitBtnDisabled = true;
                                          NamespaceService.createNamespace($scope.appId, namespaceCreationModels)
                                              .then(function (result) {
-                                                 toastr.success("创建成功");
+                                                 toastr.success("Created Successfully");
                                                  $scope.step = 2;
                                                  setInterval(function () {
                                                      $scope.submitBtnDisabled = false;
@@ -117,9 +117,9 @@ namespace_module.controller("LinkNamespaceController",
 
                                          var namespaceNameLength = $scope.concatNamespace().length;
                                          if (namespaceNameLength > 32) {
-                                             toastr.error("namespace名称不能大于32个字符. 部门前缀"
+                                             toastr.error("The name of namespace should not be longer that 32 characters. Department prefix"
                                                           + (namespaceNameLength - $scope.appNamespace.name.length)
-                                                          + "个字符, 名称" + $scope.appNamespace.name.length + "个字符"
+                                                          + "characters, name" + $scope.appNamespace.name.length + "characters"
                                              );
                                              return;
                                          }
@@ -136,7 +136,7 @@ namespace_module.controller("LinkNamespaceController",
                                                  }, 1000);
                                              }, function (result) {
                                                  $scope.submitBtnDisabled = false;
-                                                 toastr.error(AppUtil.errorMsg(result), "创建失败");
+                                                 toastr.error(AppUtil.errorMsg(result), "Creation Failed");
                                              });
                                      }
 

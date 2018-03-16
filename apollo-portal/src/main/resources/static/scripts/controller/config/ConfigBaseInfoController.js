@@ -45,7 +45,7 @@ function ConfigBaseInfoController($rootScope, $scope, $window, $location, toastr
             loadAppInfo();
             handleFavorite();
         }, function (result) {
-            toastr.error(AppUtil.errorMsg(result), "获取用户登录信息失败");
+            toastr.error(AppUtil.errorMsg(result), "Failed to acquire user's login information");
         });
 
         handlePermission();
@@ -74,13 +74,13 @@ function ConfigBaseInfoController($rootScope, $scope, $window, $location, toastr
         var count = 0;
         $scope.missEnvs.forEach(function (env) {
             AppService.create_remote(env, $scope.appBaseInfo).then(function (result) {
-                toastr.success(env, '创建成功');
+                toastr.success(env, 'Created Successfully!');
                 count++;
                 if (count == $scope.missEnvs.length) {
                     location.reload(true);
                 }
             }, function (result) {
-                toastr.error(AppUtil.errorMsg(result), '创建失败:' + env);
+                toastr.error(AppUtil.errorMsg(result), 'Creation Failed:' + env);
                 count++;
                 if (count == $scope.missEnvs.length) {
                     location.reload(true);
@@ -141,7 +141,7 @@ function ConfigBaseInfoController($rootScope, $scope, $window, $location, toastr
             var nodes = AppUtil.collectData(result);
 
             if (!nodes || nodes.length == 0) {
-                toastr.error("系统出错,请重试或联系系统负责人");
+                toastr.error("An error has occurred in the system, please try again or contact the responsible person");
                 return;
             }
             //default first env if session storage is empty
@@ -160,7 +160,7 @@ function ConfigBaseInfoController($rootScope, $scope, $window, $location, toastr
 
                 var clusterNodes = [];
 
-                //如果env下面只有一个default集群则不显示集群列表
+                //If there is only one default colony under env, the colony list will not be showed
                 if (env.clusters && env.clusters.length == 1 && env.clusters[0].name
                                                                 == 'default') {
                     if ($rootScope.pageContext.env == env.env) {
@@ -185,7 +185,7 @@ function ConfigBaseInfoController($rootScope, $scope, $window, $location, toastr
 
                         clusterNode.text = cluster.name;
                         parentNode.push(node.text);
-                        clusterNode.tags = ['集群'];
+                        clusterNode.tags = ['Colony'];
                         clusterNode.parentNode = parentNode;
                         clusterNodes.push(clusterNode);
 
@@ -253,7 +253,7 @@ function ConfigBaseInfoController($rootScope, $scope, $window, $location, toastr
             $rootScope.envMapClusters = envMapClusters;
 
         }, function (result) {
-            toastr.error(AppUtil.errorMsg(result), "系统出错,请重试或联系系统负责人");
+            toastr.error(AppUtil.errorMsg(result), "An error has occurred in the system, please try again or contact the responsible person");
         });
 
     }
@@ -278,7 +278,7 @@ function ConfigBaseInfoController($rootScope, $scope, $window, $location, toastr
             FavoriteService.addFavorite(favorite)
                 .then(function (result) {
                     $scope.favoriteId = result.id;
-                    toastr.success("收藏成功");
+                    toastr.success("Successfully added to Favorites");
                 }, function (result) {
                     toastr.error(AppUtil.errorMsg(result), "收藏失败");
                 })
@@ -288,9 +288,9 @@ function ConfigBaseInfoController($rootScope, $scope, $window, $location, toastr
             FavoriteService.deleteFavorite($scope.favoriteId)
                 .then(function (result) {
                     $scope.favoriteId = 0;
-                    toastr.success("取消收藏成功");
+                    toastr.success("Successfully deleted from Favorites");
                 }, function (result) {
-                    toastr.error(AppUtil.errorMsg(result), "取消收藏失败");
+                    toastr.error(AppUtil.errorMsg(result), "Failed to delete from Favorites");
                 })
         };
     }

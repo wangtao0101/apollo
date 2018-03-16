@@ -1,20 +1,20 @@
 /**utils*/
 var appUtil = angular.module('app.util', ['toastr']);
 
-/**service module 定义*/
+/**service module defination*/
 var appService = angular.module('app.service', ['ngResource']);
 
 /** directive */
 var directive_module = angular.module('apollo.directive', ['app.service', 'app.util', 'toastr']);
 
-/** page module 定义*/
-// 首页
+/** page module defination*/
+// Homepage
 var index_module = angular.module('index', ['toastr', 'app.service', 'apollo.directive', 'app.util', 'angular-loading-bar']);
-//项目主页
+//Project Homepage
 var application_module = angular.module('application', ['app.service', 'apollo.directive', 'app.util', 'toastr', 'angular-loading-bar', 'valdr', 'ui.ace']);
-//创建项目页面
+//Create Project Page
 var app_module = angular.module('create_app', ['apollo.directive', 'toastr', 'app.service', 'app.util', 'angular-loading-bar', 'valdr']);
-//配置同步页面
+//Configurate Synchronization Page
 var sync_item_module = angular.module('sync_item', ['app.service', 'apollo.directive', 'app.util', 'toastr', 'angular-loading-bar']);
 //namespace
 var namespace_module = angular.module('namespace', ['app.service', 'apollo.directive', 'app.util', 'toastr', 'angular-loading-bar', 'valdr']);

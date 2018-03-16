@@ -111,7 +111,7 @@ function controller($rootScope, $scope, toastr, AppUtil, EventManager, ConfigSer
 
                 initPublishInfo();
             }, function (result) {
-                toastr.error(AppUtil.errorMsg(result), "加载配置信息出错");
+                toastr.error(AppUtil.errorMsg(result), "An error has occurred while loading the configuration information");
             });
     }
 
@@ -135,7 +135,7 @@ function controller($rootScope, $scope, toastr, AppUtil, EventManager, ConfigSer
                 initPublishInfo();
 
             }, function (result) {
-                toastr.error(AppUtil.errorMsg(result), "加载配置信息出错");
+                toastr.error(AppUtil.errorMsg(result), "An error has occurred while loading the configuration information");
             });
     }
 
@@ -166,17 +166,17 @@ function controller($rootScope, $scope, toastr, AppUtil, EventManager, ConfigSer
                                   $scope.toOperationNamespace.baseInfo.namespaceName,
                                   toDeleteItemId).then(
             function (result) {
-                toastr.success("删除成功!");
+                toastr.success("Successfully Deleted!");
                 EventManager.emit(EventManager.EventType.REFRESH_NAMESPACE,
                                   {
                                       namespace: $scope.toOperationNamespace
                                   });
             }, function (result) {
-                toastr.error(AppUtil.errorMsg(result), "删除失败");
+                toastr.error(AppUtil.errorMsg(result), "Deletion Failed");
             });
     }
 
-    //修改配置
+    //Modify Configuration
     function editItem(namespace, toEditItem) {
         if (!lockCheck(namespace)) {
             return;
@@ -207,7 +207,7 @@ function controller($rootScope, $scope, toastr, AppUtil, EventManager, ConfigSer
         AppUtil.showModal('#itemModal');
     }
 
-    //新增配置
+    //Add Configuraion
     function createItem(namespace) {
         if (!lockCheck(namespace)) {
             return;
@@ -276,13 +276,13 @@ function controller($rootScope, $scope, toastr, AppUtil, EventManager, ConfigSer
                                             $rootScope.pageContext.clusterName,
                                             toCreateBranchNamespace.baseInfo.namespaceName)
             .then(function (result) {
-                toastr.success("创建灰度成功");
+                toastr.success("Gray creation succeeded");
                 EventManager.emit(EventManager.EventType.REFRESH_NAMESPACE,
                                   {
                                       namespace: toCreateBranchNamespace
                                   });
             }, function (result) {
-                toastr.error(AppUtil.errorMsg(result), "创建灰度失败");
+                toastr.error(AppUtil.errorMsg(result), "Gray creation failed");
             })
 
     }
@@ -302,13 +302,13 @@ function controller($rootScope, $scope, toastr, AppUtil, EventManager, ConfigSer
                                             $scope.toDeleteBranch.baseInfo.clusterName
             )
             .then(function (result) {
-                toastr.success("删除成功");
+                toastr.success("Successfully Deleted");
                 EventManager.emit(EventManager.EventType.REFRESH_NAMESPACE,
                                   {
                                       namespace: $scope.toDeleteBranch.parentNamespace
                                   });
             }, function (result) {
-                toastr.error(AppUtil.errorMsg(result), "删除分支失败");
+                toastr.error(AppUtil.errorMsg(result), "Failed to delete the branch");
             })
 
     }
@@ -353,12 +353,12 @@ function controller($rootScope, $scope, toastr, AppUtil, EventManager, ConfigSer
                 var url = '/config.html?#/appid=' + appId + '&env=' + $scope.pageContext.env + '&cluster='
                           + clusterName;
 
-                namespaceTips.push("<a target='_blank' href=\'" + url + "\'>AppId = " + appId + ", 集群 = " + clusterName
+                namespaceTips.push("<a target='_blank' href=\'" + url + "\'>AppId = " + appId + ", colony = " + clusterName
                                    + ", Namespace = " + namespace.namespaceName + "</a>");
             });
 
             $scope.deleteNamespaceContext.detailReason =
-                "以下应用已关联此公共Namespace，必须先删除全部已关联的Namespace才能删除公共Namespace。<br>"
+                "Following applications have been related to this public Namespace, all the related Namespace must be deleted before deleting the public Namespace.<br>"
                 + namespaceTips.join("<br>");
 
             AppUtil.showModal('#deleteNamespaceDenyForPublicNamespaceDialog');

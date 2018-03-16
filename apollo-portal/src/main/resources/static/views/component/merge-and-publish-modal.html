@@ -4,25 +4,25 @@
             <div class="modal-header panel-primary">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">全量发布</h4>
+                <h4 class="modal-title">Full dose release</h4>
             </div>
             <div class="modal-body">
-                全量发布将会把灰度版本的配置合并到主分支，并发布。
+                Full dose release will combine the configuration of gray version to the main branch and release.
                 <br>
-                <h5>全量发布后,您希望</h5>
+                <h5>After the full dose release, would you like to</h5>
                 <div class="radio">
                     <label ng-click="toReleaseNamespace.mergeAfterDeleteBranch = 'true'">
                         <input type="radio" name="deleteBranch"
                                ng-checked="!toReleaseNamespace.mergeAfterDeleteBranch ||
                                            toReleaseNamespace.mergeAfterDeleteBranch == 'true'">
-                        删除灰度版本
+                        delete the gray version
                     </label>
                 </div>
                 <div class="radio">
                     <label ng-click="toReleaseNamespace.mergeAfterDeleteBranch = 'false'">
                         <input type="radio" name="deleteBranch"
                                ng-checked="toReleaseNamespace.mergeAfterDeleteBranch == 'false'">
-                        保留灰度版本
+                        keep the gray version
                     </label>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal"
                         ng-click="showReleaseModal()">
-                    确定
+                    Confirm
                 </button>
             </div>
         </div>

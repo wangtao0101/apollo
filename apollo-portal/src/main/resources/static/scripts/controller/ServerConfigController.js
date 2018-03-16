@@ -6,9 +6,9 @@ server_config_module.controller('ServerConfigController',
 
                                      $scope.create = function () {
                                          ServerConfigService.create($scope.serverConfig).then(function (result) {
-                                             toastr.success("添加成功");
+                                             toastr.success("Added Successfully");
                                          }, function (result) {
-                                             toastr.error(AppUtil.errorMsg(result), "添加失败");
+                                             toastr.error(AppUtil.errorMsg(result), "Failed to add");
                                          });
                                      };
 

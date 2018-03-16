@@ -7,19 +7,19 @@ function appValdr(valdrProvider) {
                                          'appId': {
                                              'size': {
                                                  'max': 32,
-                                                 'message': 'AppId长度不能多于32个字符'
+                                                 'message': 'The length of AppId should be no longer than 32 characters'
                                              },
                                              'required': {
-                                                 'message': 'AppId不能为空'
+                                                 'message': 'AppId cannot be null'
                                              }
                                          },
                                          'appName': {
                                              'size': {
                                                  'max': 128,
-                                                 'message': '应用名称长度不能多于128个字符'
+                                                 'message': 'Application name should be no longer than 128 characters'
                                              },
                                              'required': {
-                                                 'message': '应用名称不能为空'
+                                                 'message': 'Application name cannot be null'
                                              }
                                          }
                                      }
@@ -32,10 +32,10 @@ cluster_module.config(function (valdrProvider) {
                                          'clusterName': {
                                              'size': {
                                                  'max': 32,
-                                                 'message': '集群名称长度不能多于32个字符'
+                                                 'message': 'Colony name should be no longer than 32 characters'
                                              },
                                              'required': {
-                                                 'message': '集群名称不能为空'
+                                                 'message': 'Colony name cannot be null'
                                              }
                                          }
                                      }
@@ -48,16 +48,16 @@ namespace_module.config(function (valdrProvider) {
                                          'namespaceName': {
                                              'size': {
                                                  'max': 32,
-                                                 'message': 'Namespace名称长度不能多于32个字符'
+                                                 'message': 'The name of Namespace should be no longer than 32 characters'
                                              },
                                              'required': {
-                                                 'message': 'Namespace名称不能为空'
+                                                 'message': 'The name of Namespace cannot be null'
                                              }
                                          },
                                          'comment': {
                                              'size': {
                                                  'max': 64,
-                                                 'message': '备注长度不能多于64个字符'
+                                                 'message': 'Memo should be no longer than 64 characters'
                                              }
                                          }
                                      }
@@ -70,21 +70,21 @@ application_module.config(function (valdrProvider) {
                                          'key': {
                                              'size': {
                                                  'max': 128,
-                                                 'message': 'Key长度不能多于128个字符'
+                                                 'message': 'The length of Key should be no longer than 128 characters'
                                              },
                                              'required': {
-                                                 'message': 'Key不能为空'
+                                                 'message': 'Key cannot be null'
                                              }
                                          }, 
                                          'value': {
                                              'required': {
-                                                 'message': 'value不能为空'
+                                                 'message': 'value cannot be null'
                                              }
                                          },
                                          'comment': {
                                              'size': {
                                                  'max': 64,
-                                                 'message': '备注长度不能多于64个字符'
+                                                 'message': 'Memo should be no longer than 64 characters'
                                              }
                                          }
                                      },
@@ -92,16 +92,16 @@ application_module.config(function (valdrProvider) {
                                          'releaseName': {
                                              'size': {
                                                  'max': 64,
-                                                 'message': 'Release Name长度不能多于64个字符'
+                                                 'message': 'Release Name should be no longer than 64 characters'
                                              },
                                              'required': {
-                                                 'message': 'Release Name不能为空'
+                                                 'message': 'Release Name cannot be null'
                                              }
                                          },
                                          'comment': {
                                              'size': {
                                                  'max': 64,
-                                                 'message': '备注长度不能多于64个字符'
+                                                 'message': 'Memo should be no longer than 64 characters'
                                              }
                                          }
                                      }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" media='all' href="vendor/font-awesome.min.css">
 
     <link rel="stylesheet" type="text/css" href="styles/common-style.css">
-    <title>Apollo配置中心</title>
+    <title>Configuration Center</title>
 </head>
 
 <body>
@@ -21,13 +21,13 @@
 
     <section class="media create-app-list">
         <aside class="media-left text-center">
-            <h5>我的项目</h5>
+            <h5>My Project</h5>
         </aside>
         <aside class="media-body">
             <div class="app-panel col-md-2 text-center" ng-click="goToCreateAppPage()">
                 <div href="#" class="thumbnail create-btn hover cursor-pointer">
                     <img src="img/plus-white.png"/>
-                    <h5>创建项目</h5>
+                    <h5>Create Project</h5>
                 </div>
             </div>
             <div class="app-panel col-md-2 text-center" ng-repeat="app in createdApps"
@@ -41,7 +41,7 @@
                  ng-click="getUserCreatedApps()">
                 <div href="#" class="thumbnail hover cursor-pointer">
                     <img class="more-img" src="img/more.png"/>
-                    <h5>加载更多</h5>
+                    <h5>Load More</h5>
                 </div>
             </div>
         </aside>
@@ -49,7 +49,7 @@
 
     <section class="media favorites-app-list">
         <aside class="media-left text-center">
-            <h5>收藏的项目</h5>
+            <h5>Favorite Projects</h5>
         </aside>
         <aside class="media-body">
             <div class="app-panel col-md-2 text-center"
@@ -62,11 +62,11 @@
                     <h5 ng-bind="app.name"></h5>
 
                     <p class="operate-panel" ng-show="app.showOperationBtn">
-                        <button class="btn btn-default btn-xs" title="置顶"
+                        <button class="btn btn-default btn-xs" title="Stick"
                                 ng-click="toTop(app.favoriteId);$event.stopPropagation();">
                             <img src="img/top.png" class="i-15">
                         </button>
-                        <button class="btn btn-default btn-xs" title="取消收藏"
+                        <button class="btn btn-default btn-xs" title="Delete from Favorites"
                                 ng-click="deleteFavorite(app.favoriteId);$event.stopPropagation();">
                             <img src="img/like.png" class="i-15">
                         </button>
@@ -77,11 +77,11 @@
                  ng-click="getUserFavorites()">
                 <div href="#" class="thumbnail hover cursor-pointer">
                     <img class="more-img" src="img/more.png"/>
-                    <h5>加载更多</h5>
+                    <h5>Load More</h5>
                 </div>
             </div>
             <div class="no-favorites text-center" ng-show="!favorites || favorites.length == 0">
-                <h4>您还没有收藏过任何项目，在项目主页可以收藏项目哟~</h4>
+                <h4>You have not yet added any project into Favorites, you may do this on the project homepage~</h4>
             </div>
 
         </aside>
@@ -89,7 +89,7 @@
 
     <section class="media visit-app-list" ng-show="visitedApps && visitedApps.length">
         <aside class="media-left text-center">
-            <h5>最近浏览的项目</h5>
+            <h5>Recently viewed items</h5>
         </aside>
         <aside class="media-body">
             <div class="app-panel col-md-2 text-center"

@@ -42,7 +42,7 @@ function itemModalDirective(toastr, $sce, AppUtil, EventManager, ConfigService) 
                     var hasRepeatKey = false;
                     scope.toOperationNamespace.items.forEach(function (item) {
                         if (!item.isDeleted && scope.item.key == item.item.key) {
-                            toastr.error("key=" + scope.item.key + " 已存在");
+                            toastr.error("key=" + scope.item.key + " Already exsiting");
                             hasRepeatKey = true;
                         }
                     });
@@ -59,7 +59,7 @@ function itemModalDirective(toastr, $sce, AppUtil, EventManager, ConfigService) 
                                                   scope.toOperationNamespace.baseInfo.namespaceName,
                                                   scope.item).then(
                             function (result) {
-                                toastr.success("添加成功,如需生效请发布");
+                                toastr.success("Added successfully, please release it if it is needed to become effective");
                                 scope.item.addItemBtnDisabled = false;
                                 AppUtil.hideModal('#itemModal');
                                 EventManager.emit(EventManager.EventType.REFRESH_NAMESPACE,
@@ -68,12 +68,12 @@ function itemModalDirective(toastr, $sce, AppUtil, EventManager, ConfigService) 
                                                   });
 
                             }, function (result) {
-                                toastr.error(AppUtil.errorMsg(result), "添加失败");
+                                toastr.error(AppUtil.errorMsg(result), "Failed to add");
                                 scope.item.addItemBtnDisabled = false;
                             });
                     } else {
                         if (selectedClusters.length == 0) {
-                            toastr.error("请选择集群");
+                            toastr.error("Please select colony");
                             scope.item.addItemBtnDisabled = false;
                             return;
                         }
@@ -87,7 +87,7 @@ function itemModalDirective(toastr, $sce, AppUtil, EventManager, ConfigService) 
                                 function (result) {
                                     scope.item.addItemBtnDisabled = false;
                                     AppUtil.hideModal('#itemModal');
-                                    toastr.success(cluster.env + " , " + scope.item.key, "添加成功,如需生效请发布");
+                                    toastr.success(cluster.env + " , " + scope.item.key, "Added successfully, please release it if it is needed to become effective");
                                     if (cluster.env == scope.env &&
                                         cluster.name == scope.cluster) {
 
@@ -97,7 +97,7 @@ function itemModalDirective(toastr, $sce, AppUtil, EventManager, ConfigService) 
                                                           });
                                     }
                                 }, function (result) {
-                                    toastr.error(AppUtil.errorMsg(result), "添加失败");
+                                    toastr.error(AppUtil.errorMsg(result), "Failed to add");
                                     scope.item.addItemBtnDisabled = false;
                                 });
                         });
@@ -122,9 +122,9 @@ function itemModalDirective(toastr, $sce, AppUtil, EventManager, ConfigService) 
 
                             AppUtil.hideModal('#itemModal');
 
-                            toastr.success("更新成功, 如需生效请发布");
+                            toastr.success("updated successfully, please release it if it is needed to become effective");
                         }, function (result) {
-                            toastr.error(AppUtil.errorMsg(result), "更新失败");
+                            toastr.error(AppUtil.errorMsg(result), "Update Failed");
                         });
                 }
 

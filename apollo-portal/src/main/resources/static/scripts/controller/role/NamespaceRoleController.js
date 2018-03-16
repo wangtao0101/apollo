@@ -28,14 +28,14 @@ role_module.controller('NamespaceRoleController',
                                 .then(function (result) {
                                     $scope.rolesAssignedUsers = result;
                                 }, function (result) {
-                                    toastr.error(AppUtil.errorMsg(result), "加载授权用户出错");
+                                    toastr.error(AppUtil.errorMsg(result), "An error has occurred while loading the authorized user");
                                 });
 
                             $scope.assignRoleToUser = function (roleType) {
                                 if ('ReleaseNamespace' == roleType) {
                                     var user = $('.' + $scope.releaseRoleWidgetId).select2('data')[0];
                                     if (!user) {
-                                        toastr.warning("请选择用户");
+                                        toastr.warning("Please select user");
                                         return;
                                     }
                                     $scope.ReleaseRoleSubmitBtnDisabled = true;
@@ -44,19 +44,19 @@ role_module.controller('NamespaceRoleController',
                                                                                     $scope.pageContext.namespaceName,
                                                                                     toAssignReleaseNamespaceRoleUser)
                                         .then(function (result) {
-                                            toastr.success("添加成功");
+                                            toastr.success("Added Successfully");
                                             $scope.ReleaseRoleSubmitBtnDisabled = false;
                                             $scope.rolesAssignedUsers.releaseRoleUsers.push(
                                                 {userId: toAssignReleaseNamespaceRoleUser});
                                             $('.' + $scope.releaseRoleWidgetId).select2("val", "");
                                         }, function (result) {
                                             $scope.ReleaseRoleSubmitBtnDisabled = false;
-                                            toastr.error(AppUtil.errorMsg(result), "添加失败");
+                                            toastr.error(AppUtil.errorMsg(result), "Failed to add");
                                         });
                                 } else {
                                     var user = $('.' + $scope.modifyRoleWidgetId).select2('data')[0];
                                     if (!user) {
-                                        toastr.warning("请选择用户");
+                                        toastr.warning("Please select user");
                                         return;
                                     }
                                     $scope.modifyRoleSubmitBtnDisabled = true;
@@ -65,14 +65,14 @@ role_module.controller('NamespaceRoleController',
                                                                                    $scope.pageContext.namespaceName,
                                                                                    toAssignModifyNamespaceRoleUser)
                                         .then(function (result) {
-                                            toastr.success("添加成功");
+                                            toastr.success("Added Successfully");
                                             $scope.modifyRoleSubmitBtnDisabled = false;
                                             $scope.rolesAssignedUsers.modifyRoleUsers.push(
                                                 {userId: toAssignModifyNamespaceRoleUser});
                                             $('.' + $scope.modifyRoleWidgetId).select2("val", "");
                                         }, function (result) {
                                             $scope.modifyRoleSubmitBtnDisabled = false;
-                                            toastr.error(AppUtil.errorMsg(result), "添加失败");
+                                            toastr.error(AppUtil.errorMsg(result), "Failed to add");
                                         });
                                 }
                             };
@@ -83,20 +83,20 @@ role_module.controller('NamespaceRoleController',
                                                                                     $scope.pageContext.namespaceName,
                                                                                     user)
                                         .then(function (result) {
-                                            toastr.success("删除成功");
+                                            toastr.success("Deleted Successfully");
                                             removeUserFromList($scope.rolesAssignedUsers.releaseRoleUsers, user);
                                         }, function (result) {
-                                            toastr.error(AppUtil.errorMsg(result), "删除失败");
+                                            toastr.error(AppUtil.errorMsg(result), "Failed to delete");
                                         });
                                 } else {
                                     PermissionService.remove_modify_namespace_role($scope.pageContext.appId,
                                                                                    $scope.pageContext.namespaceName,
                                                                                    user)
                                         .then(function (result) {
-                                            toastr.success("删除成功");
+                                            toastr.success("Deleted Successfully");
                                             removeUserFromList($scope.rolesAssignedUsers.modifyRoleUsers, user);
                                         }, function (result) {
-                                            toastr.error(AppUtil.errorMsg(result), "删除失败");
+                                            toastr.error(AppUtil.errorMsg(result), "Failed to delete");
                                         });
                                 }
                             };

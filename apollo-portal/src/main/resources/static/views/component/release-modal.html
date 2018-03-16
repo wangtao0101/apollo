@@ -5,16 +5,16 @@
             <div class="modal-header panel-primary">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" ng-show="!toReleaseNamespace.isBranch">发布
-                    <small>(只有发布过的配置才会被客户端获取到，此次发布只会作用于当前环境:{{env}})</small>
+                <h4 class="modal-title" ng-show="!toReleaseNamespace.isBranch">release
+                    <small>(Only configuration released will be acquired by Clients. This release will only act on the current environment:{{env}})</small>
                 </h4>
                 <h4 class="modal-title" ng-show="toReleaseNamespace.isBranch && !toReleaseNamespace.mergeAndPublish">
-                    灰度发布
-                    <small>(灰度发布的配置只会作用于在灰度规则中配置的实例)</small>
+                    Gray release
+                    <small>(Gray release configuration will only act on examples configurated in gray rules)</small>
                 </h4>
                 <h4 class="modal-title" ng-show="toReleaseNamespace.isBranch && toReleaseNamespace.mergeAndPublish">
-                    全量发布
-                    <small>(全量发布的配置会作用于全部的实例)</small>
+                    Full dose release
+                    <small>(Full dose releas confifuration will act on all the examples)</small>
                 </h4>
 
             </div>
@@ -27,11 +27,11 @@
                             <div class="btn-group btn-group-xs" style="padding-right: 10px" role="group">
                                 <button type="button" class="btn btn-default"
                                         ng-class="{active:releaseChangeViewType=='change'}"
-                                        ng-click="switchReleaseChangeViewType('change')">查看变更
+                                        ng-click="switchReleaseChangeViewType('change')">View the changes
                                 </button>
                                 <button type="button" class="btn btn-default"
                                         ng-class="{active:releaseChangeViewType=='release'}"
-                                        ng-click="switchReleaseChangeViewType('release')">发布的值
+                                        ng-click="switchReleaseChangeViewType('release')">Value released
                                 </button>
                             </div>
                         </div>
@@ -54,16 +54,16 @@
                                     Key
                                 </th>
                                 <th>
-                                    发布的值
+                                    Value released
                                 </th>
                                 <th>
-                                    未发布的值
+                                    Value not released
                                 </th>
                                 <th>
-                                    修改人
+                                    Modifier
                                 </th>
                                 <th>
-                                    修改时间
+                                    Modification time
                                 </th>
                             </tr>
                             </thead>
@@ -73,12 +73,12 @@
                                 <td width="20%" title="{{config.item.key}}">
                                     <span ng-bind="config.item.key"></span>
                                      <span class="label label-success" ng-if="config.isModified && !config.oldValue"
-                                           data-tooltip="tooltip" data-placement="bottom" title="新增的配置">新</span>
+                                           data-tooltip="tooltip" data-placement="bottom" title="newly added configuration">new</span>
                                     <span class="label label-info"
                                           ng-if="config.isModified && config.oldValue && !config.isDeleted"
-                                          data-tooltip="tooltip" data-placement="bottom" title="修改的配置">改</span>
+                                          data-tooltip="tooltip" data-placement="bottom" title="configuration modified">modify</span>
                                     <span class="label label-danger" ng-if="config.isDeleted"
-                                          data-tooltip="tooltip" data-placement="bottom" title="删除的配置">删</span>
+                                          data-tooltip="tooltip" data-placement="bottom" title="configuration deleted">delete</span>
                                 </td>
                                 <td width="25%" title="{{config.oldValue}}">
                                     <span ng-bind="config.oldValue"></span>
@@ -105,19 +105,19 @@
                                     Key
                                 </th>
                                 <th>
-                                    主版本值
+                                    Value of the major version
                                 </th>
                                 <th>
-                                    灰度版本发布的值
+                                    Value released by the gray version
                                 </th>
                                 <th>
-                                    灰度版本未发布的值
+                                    Unreleased value of the gray version灰度版本未发布的值
                                 </th>
                                 <th>
-                                    修改人
+                                    Modifier
                                 </th>
                                 <th>
-                                    修改时间
+                                    Modificationt time
                                 </th>
                             </tr>
                             </thead>
@@ -127,7 +127,7 @@
                                 <td width="15%" title="{{config.item.key}}">
                                     <span ng-bind="config.item.key"></span>
                                         <span class="label label-danger"
-                                              ng-show="config.isDeleted">删</span>
+                                              ng-show="config.isDeleted">delete</span>
                                 </td>
                                 <td width="20%" title="{{config.masterReleaseValue}}">
                                     <span ng-bind="config.masterReleaseValue"></span>
@@ -157,22 +157,22 @@
                                     Key
                                 </th>
                                 <th ng-if="toReleaseNamespace.isBranch">
-                                    主版本值
+                                    Value of the major version
                                 </th>
                                 <th ng-if="toReleaseNamespace.isBranch && toReleaseNamespace.mergeAndPublish">
-                                    灰度版本的值
+                                    Value of the gray version
                                 </th>
                                 <th ng-if="!toReleaseNamespace.isBranch || !toReleaseNamespace.mergeAndPublish">
-                                    发布的值
+                                    Value released
                                 </th>
                                 <th ng-if="!toReleaseNamespace.isBranch || !toReleaseNamespace.mergeAndPublish">
-                                    未发布的值
+                                    Value not released
                                 </th>
                                 <th>
-                                    修改人
+                                    Modifier
                                 </th>
                                 <th>
-                                    修改时间
+                                    Modification time
                                 </th>
                             </tr>
                             </thead>
@@ -217,21 +217,21 @@
                          ng-show="(!toReleaseNamespace.isBranch && !toReleaseNamespace.itemModifiedCnt)"
                          valdr-form-group>
                         <label class="form-control-static">
-                            配置没有变化
+                            Configuration unchanged
                         </label>
                     </div>
                     <div class="col-sm-5"
                          ng-show="(toReleaseNamespace.isBranch && !toReleaseNamespace.mergeAndPublish && !toReleaseNamespace.itemModifiedCnt)"
                          valdr-form-group>
                         <label class="form-control-static">
-                            灰度配置没有变化
+                            Gray configuration unchanged
                         </label>
                     </div>
                     <div class="col-sm-5"
                          ng-show="(toReleaseNamespace.isBranch && toReleaseNamespace.mergeAndPublish && toReleaseNamespace.branchItems.length == 0)"
                          valdr-form-group>
                         <label class="form-control-static">
-                            没有灰度的配置项
+                            Configuration itmes withtout gray
                         </label>
                     </div>
 
@@ -260,11 +260,11 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-primary"
                         ng-disabled="releaseForm.$invalid || releaseBtnDisabled
                         || (toReleaseNamespace.isBranch && toReleaseNamespace.mergeAndPublish && toReleaseNamespace.branchItems.length == 0)">
-                    发布
+                    Release
                 </button>
             </div>
         </div>

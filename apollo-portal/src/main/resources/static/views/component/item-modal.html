@@ -7,10 +7,10 @@
                         aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">
                     <span ng-show="item.tableViewOperType == 'create' && !toOperationNamespace.isBranch">
-                        添加配置项 <small class="text-info">(温馨提示: 可以通过文本模式批量添加配置)</small>
+                        Add configuration item <small class="text-info">(Tips: Configuration could be batch added via text mode)</small>
                     </span>
-                    <span ng-show="item.tableViewOperType == 'create' && toOperationNamespace.isBranch"> 添加灰度配置项</span>
-                    <span ng-show="item.tableViewOperType == 'update'"> 修改配置项</span>
+                    <span ng-show="item.tableViewOperType == 'create' && toOperationNamespace.isBranch">Add gray configuration item</span>
+                    <span ng-show="item.tableViewOperType == 'update'"> Modify configuration item</span>
                 </h4>
             </div>
             <div class="modal-body form-horizontal">
@@ -35,9 +35,9 @@
                                   ng-required="true"
                                   ng-model="item.value">
                             </textarea>
-                        注意: 隐藏字符(空格、换行符、制表符Tab)容易导致配置出错，如果需要检测Value中隐藏字符请点击 <a ng-click="showHiddenChars()">检测隐藏字符</a>
+                        Please mind: hidden characters(space, line break, Tab) may cause errors to the configuration. To examine the hidden characters in value, please click <a ng-click="showHiddenChars()"> to proceed</a>
                         <br>
-                        <div class="bg-info" ng-show="showHiddenCharsContext && hiddenCharCounter == 0">无隐藏字符</div>
+                        <div class="bg-info" ng-show="showHiddenCharsContext && hiddenCharCounter == 0">No hidden characters</div>
                         <div class="bg-info" ng-bind-html="valueWithHiddenChars" ng-show="showHiddenCharsContext && hiddenCharCounter > 0"></div>
                     </div>
 
@@ -55,7 +55,7 @@
                      ng-show="item.tableViewOperType == 'create' && !toOperationNamespace.isBranch">
                     <label class="col-sm-2 control-label">
                         <apollorequiredfield></apollorequiredfield>
-                        选择集群</label>
+                        Select colony</label>
                     <div class="col-sm-10">
                         <apolloclusterselector apollo-app-id="appId"
                                                apollo-default-all-checked="false"
@@ -69,11 +69,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">
-                    取消
+                    Cancel
                 </button>
                 <button type="submit" class="btn btn-primary"
                         ng-disabled="itemForm.$invalid || (item.addItemBtnDisabled && item.tableViewOperType == 'create')">
-                    提交
+                    Submit
                 </button>
             </div>
         </div>

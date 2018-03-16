@@ -50,7 +50,7 @@ sync_item_module.controller("SyncItemController",
                                              $scope.viewItems = sourceItems;
                                              $(".apollo-container").removeClass("hidden");
                                          }, function (result) {
-                                             toastr.error(AppUtil.errorMsg(result), "加载配置出错");
+                                             toastr.error(AppUtil.errorMsg(result), "An error has occurred while loading the configuraiton");
                                          });
                                  }
 
@@ -71,11 +71,11 @@ sync_item_module.controller("SyncItemController",
                                  function diff() {
                                      parseSyncSourceData();
                                      if (syncData.syncItems.length == 0) {
-                                         toastr.warning("请选择需要同步的配置");
+                                         toastr.warning("Please select configuraitons that require synchronization");
                                          return;
                                      }
                                      if (syncData.syncToNamespaces.length == 0) {
-                                         toastr.warning("请选择集群");
+                                         toastr.warning("Please select colony");
                                          return;
                                      }
                                      $scope.hasDiff = false;
@@ -93,7 +93,7 @@ sync_item_module.controller("SyncItemController",
                                                  }
 
                                                  if (clusterDiff.diffs.updateItems.length > 0) {
-                                                     //赋予同步前的值
+                                                     //Assign the value before synchronization
                                                      ConfigService.find_items(clusterDiff.namespace.appId,
                                                                               clusterDiff.namespace.env,
                                                                               clusterDiff.namespace.clusterName,

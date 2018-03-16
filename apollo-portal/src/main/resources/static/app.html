@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html ng-app="create_app">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" media='all' href="vendor/angular/loading-bar.min.css">
     <link rel="stylesheet" type="text/css" href="styles/common-style.css">
 
-    <title>新建项目</title>
+    <title>New Project</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel">
                 <header class="panel-heading">
-                    创建项目
+                    Create Project
                 </header>
 
                 <form class="form-horizontal panel-body" name="appForm" ng-controller="CreateAppController"
@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">
                             <apollorequiredfield></apollorequiredfield>
-                            部门</label>
+                            Department</label>
                         <div class="col-sm-3">
                             <select id="organization">
                                 <option></option>
@@ -41,41 +41,41 @@
                     <div class="form-group" valdr-form-group>
                         <label class="col-sm-3 control-label">
                             <apollorequiredfield></apollorequiredfield>
-                            应用Id</label>
+                            Application</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" name="appId" ng-model="app.appId">
-                            <small>（应用唯一标识）</small>
+                            <small>（Unique Identity of Application）</small>
                         </div>
                     </div>
                     <div class="form-group" valdr-form-group>
                         <label class="col-sm-3 control-label">
                             <apollorequiredfield></apollorequiredfield>
-                            应用名称</label>
+                            Application Name</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" name="appName" ng-model="app.name">
-                            <small>(建议格式 xx-yy-zz 例:apollo-server)</small>
+                            <small>(Recommended Format xx-yy-zz For example:apollo-server)</small>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">
                             <apollorequiredfield></apollorequiredfield>
-                            应用负责人</label>
+                            Application Leader</label>
                         <div class="col-sm-6 J_ownerSelectorPanel">
                             <apollouserselector apollo-id="'ownerSelector'"></apollouserselector>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">项目管理员<br>
+                        <label class="col-sm-3 control-label">Project Administrator<br>
 
                         </label>
                         <div class="col-sm-9 J_adminSelectorPanel">
 
                             <apollomultipleuserselector apollo-id="'adminSelector'"></apollomultipleuserselector>
                             <br>
-                            <small>(应用负责人默认具有项目管理员权限，</small>
+                            <small>(Application leaders are tacitly approved of administrator permissions，</small>
                             <br>
-                            <small>项目管理员可以创建Namespace和集群、分配用户权限)</small>
+                            <small>Project administrators are able to create Namespace and colony, and assign permissions to users)</small>
 
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                         <div class="col-sm-offset-3 col-sm-9">
 
                             <button type="submit" class="btn btn-primary"
-                                    ng-disabled="appForm.$invalid || submitBtnDisabled">提交
+                                    ng-disabled="appForm.$invalid || submitBtnDisabled">Submit
                             </button>
                         </div>
                     </div>

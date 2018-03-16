@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" media='all' href="vendor/angular/loading-bar.min.css">
     <link rel="stylesheet" type="text/css" href="styles/common-style.css">
 
-    <title>用户管理</title>
+    <title>User Management</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel">
                 <header class="panel-heading">
-                    用户管理
+                    User Management
                 </header>
 
                 <form class="form-horizontal panel-body" name="appForm" ng-controller="UserController"
@@ -31,7 +31,7 @@
                     <div class="form-group" valdr-form-group>
                         <label class="col-sm-2 control-label">
                             <apollorequiredfield></apollorequiredfield>
-                            用户名</label>
+                            User Name</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" name="username" ng-model="user.username">
                         </div>
@@ -39,7 +39,7 @@
                     <div class="form-group" valdr-form-group>
                         <label class="col-sm-2 control-label">
                             <apollorequiredfield></apollorequiredfield>
-                            密码</label>
+                            Password</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" name="password" ng-model="user.password">
                         </div>
@@ -47,7 +47,7 @@
                     <div class="form-group" valdr-form-group>
                         <label class="col-sm-2 control-label">
                             <apollorequiredfield></apollorequiredfield>
-                            邮箱</label>
+                            Email</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" name="password" ng-model="user.email">
                         </div>
@@ -57,7 +57,7 @@
                         <div class="col-sm-offset-2 col-sm-9">
 
                             <button type="submit" class="btn btn-primary"
-                                    ng-disabled="appForm.$invalid || submitBtnDisabled">提交
+                                    ng-disabled="appForm.$invalid || submitBtnDisabled">Submit
                             </button>
                         </div>
                     </div>

@@ -2,7 +2,7 @@ appUtil.service('AppUtil', ['toastr', '$window', '$q', function (toastr, $window
 
     function parseErrorMsg(response) {
         if (response.status == -1) {
-            return "您的登录信息已过期,请刷新页面后重试";
+            return "Your login information has expired, please refresh the page and try again";
         }
         var msg = "Code:" + response.status;
         if (response.data.message != null) {
@@ -40,7 +40,7 @@ appUtil.service('AppUtil', ['toastr', '$window', '$q', function (toastr, $window
         },
         parseParams: function (query, notJumpToHomePage) {
             if (!query) {
-                //如果不传这个参数或者false则返回到首页(参数出错)
+                //Not uploading this parameter or occuring false (parameter error), return to the homepage
                 if (!notJumpToHomePage) {
                     $window.location.href = '/index.html';
                 } else {

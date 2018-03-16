@@ -26,7 +26,7 @@ function createAppController($scope, $window, toastr, AppService, AppUtil, Organ
                 organizations.push(org);
             });
             $('#organization').select2({
-                                           placeholder: '请选择部门',
+                                           placeholder: 'Please select your department',
                                            width: '100%',
                                            data: organizations
                                        });
@@ -41,7 +41,7 @@ function createAppController($scope, $window, toastr, AppService, AppUtil, Organ
         var selectedOrg = $('#organization').select2('data')[0];
 
         if (!selectedOrg.id) {
-            toastr.warning("请选择部门");
+            toastr.warning("Please select your department");
             return;
         }
 
@@ -51,7 +51,7 @@ function createAppController($scope, $window, toastr, AppService, AppUtil, Organ
         // owner
         var owner = $('.ownerSelector').select2('data')[0];
         if (!owner) {
-            toastr.warning("请选择应用负责人");
+            toastr.warning("Please select the application leader");
             return;
         }
         $scope.app.ownerName = owner.id;
@@ -66,14 +66,14 @@ function createAppController($scope, $window, toastr, AppService, AppUtil, Organ
         }
 
         AppService.create($scope.app).then(function (result) {
-            toastr.success('创建成功!');
+            toastr.success('Created Successfully!');
             setInterval(function () {
                 $scope.submitBtnDisabled = false;
                 $window.location.href = '/config.html?#appid=' + result.appId;
             }, 1000);
         }, function (result) {
             $scope.submitBtnDisabled = false;
-            toastr.error(AppUtil.errorMsg(result), '创建失败!');
+            toastr.error(AppUtil.errorMsg(result), 'Creation Failed!');
         });
     }
 

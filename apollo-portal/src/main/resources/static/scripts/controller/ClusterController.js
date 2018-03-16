@@ -19,7 +19,7 @@ cluster_module.controller('ClusterController',
                                    });
                                    $(".apollo-container").removeClass("hidden");
                                }, function (result) {
-                                   toastr.error(AppUtil.errorMsg(result), "加载环境信息出错");
+                                   toastr.error(AppUtil.errorMsg(result), "An error has occured while loading the environment information");
                                });
 
                                $scope.clusterName = '';
@@ -45,18 +45,18 @@ cluster_module.controller('ClusterController',
                                                                              name: $scope.clusterName,
                                                                              appId: $scope.appId
                                                                          }).then(function (result) {
-                                               toastr.success(env.name, "集群创建成功");
+                                               toastr.success(env.name, "Colony successfully created!");
                                                $scope.step = 2;
                                                $scope.submitBtnDisabled = false;
                                            }, function (result) {
-                                               toastr.error(AppUtil.errorMsg(result), "集群创建失败");
+                                               toastr.error(AppUtil.errorMsg(result), "Colony creation failed!");
                                                $scope.submitBtnDisabled = false;
                                            })
                                        }
                                    });
 
                                    if (noEnvChecked){
-                                       toastr.warning("请选择环境");
+                                       toastr.warning("Please select environment");
                                    }
 
                                };

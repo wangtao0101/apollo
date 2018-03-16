@@ -6,7 +6,7 @@
                         aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title">
-                    编辑灰度规则
+                    Edit gray rules
                 </h4>
             </div>
             <div class="modal-body form-horizontal">
@@ -14,7 +14,7 @@
                      ng-show="branch.parentNamespace.isPublic && !branch.parentNamespace.isLinkedNamespace">
                     <label class="control-label col-md-3 text-right">
                         <apollorequiredfield></apollorequiredfield>
-                        灰度的AppId</label>
+                        AppId of gray</label>
                     <div class="col-md-4">
                         <input type="text" class="form-control"
                                ng-model="branch.editingRuleItem.clientAppId"
@@ -25,19 +25,19 @@
                 </div>
                 <div class="form-group"
                      ng-show="branch.parentNamespace.isPublic && !branch.parentNamespace.isLinkedNamespace">
-                    <label class="control-label col-md-3 text-right">灰度应用规则</label>
+                    <label class="control-label col-md-3 text-right">Gray application rules</label>
                     <div class="col-md-9">
                         <label class="form-control-static radio-inline">
                             <input type="radio" name="ApplyToAllInstances" value="false"
                                    ng-checked="!branch.editingRuleItem.ApplyToAllInstances"
                                    ng-click="branch.editingRuleItem.ApplyToAllInstances = false">
-                            应用到部分实例
+                            Apply to part of the examples
                         </label>
                         <label class="form-control-static radio-inline">
                             <input type="radio" name="ApplyToAllInstances" value="true"
                                    ng-checked="branch.editingRuleItem.ApplyToAllInstances"
                                    ng-click="branch.editingRuleItem.ApplyToAllInstances = true">
-                            应用到所有的实例
+                            Apply to all the examples
                         </label>
                     </div>
                 </div>
@@ -54,21 +54,21 @@
                                     </option>
                                 </select>
                                 <div ng-show="branch.parentNamespace.isPublic && !branch.parentNamespace.isLinkedNamespace">
-                                    <small>(实例列表会根据输入的AppId自动过滤)</small>
+                                    <small>(The list of examples will automatically filter according to the AppId entered)</small>
                                 </div>
                                 <div style="margin-top: 5px">
-                                    <small>没找到你想要的IP？可以<a ng-click="manual =! manual">手动输入IP</a></small>
+                                    <small>Have not yet found the IP you want？You may<a ng-click="manual =! manual">mannually enter the IP</a></small>
                                 </div>
                             </div>
                         </div>
                         <div class="form-inline" ng-show="manual">
                             <div class="form-group">
                                     <textarea class="form-control" ng-model="toAddIPs" rows="3"
-                                              placeholder="输入IP列表，英文逗号隔开，输入完后点击添加按钮"></textarea>
+                                              placeholder="Enter the list of IP using English commas to separate，and click the add button after entering"></textarea>
                             </div>
                             <button class="btn-default btn add-rule"
                                     ng-click="batchAddIPs(branch, toAddIPs)">
-                                添加
+                                Add
                             </button>
                         </div>
                     </div>
@@ -91,9 +91,9 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" ng-click="cancelEditItem(branch)">取消</button>
+                <button class="btn btn-default" ng-click="cancelEditItem(branch)">Cancel</button>
                 <button class="btn btn-primary" ng-disabled="completeEditBtnDisable"
-                        ng-click="completeEditItem(branch)">完成
+                        ng-click="completeEditItem(branch)">Finish
                 </button>
             </div>
         </div>

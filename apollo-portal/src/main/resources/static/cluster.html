@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html ng-app="cluster">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
     <link rel="stylesheet" type="text/css" media='all' href="vendor/angular/loading-bar.min.css">
     <link rel="stylesheet" type="text/css" href="styles/common-style.css">
-    <title>新建集群</title>
+    <title>New Colony</title>
 </head>
 
 <body>
@@ -23,10 +23,10 @@
                 <header class="panel-heading">
                     <div class="row">
                         <div class="col-md-6">
-                            <h4>创建集群</h4>
+                            <h4>Create Colony</h4>
                         </div>
                         <div class="col-md-6 text-right">
-                            <a type="button" class="btn btn-info" href="/config.html?#/appid={{appId}}">返回到项目首页
+                            <a type="button" class="btn btn-info" href="/config.html?#/appid={{appId}}">Return to Project Homepage
                             </a>
                         </div>
                     </div>
@@ -39,13 +39,13 @@
                     <div class="alert alert-info no-radius" role="alert">
                         <strong>Tips:</strong>
                         <ul>
-                            <li>通过添加集群，可以使同一份程序在不同的集群（如不同的数据中心）使用不同的配置</li>
-                            <li>如果不同集群使用一样的配置，则没有必要创建集群</li>
+                            <li>By adding colonies,one same program may adopt different configuration in different colonies (for example, in different data centers)</li>
+                            <li>If different colonies have adopeted same configuration, it will not be necessary to create colonies</li>
                             <li>
-                                Apollo默认会读取机器上/opt/settings/server.properties(linux)或C:\opt\settings\server.properties(windows)文件中的idc属性作为集群名字，
-                                如SHAJQ（金桥数据中心）、SHAOY（欧阳数据中心)
+                                Apollo will tacitly abstract from files/opt/settings/server.properties(linux)orC:\opt\settings\server.properties(windows)in the machine the idc attribute as the name of colony
+,                                such as SHAJQ（Jinqiao Data Center）,SHAOY（Ouyang Data Center)
                             </li>
-                            <li>在这里创建的集群名字需要和机器上server.properties中的idc属性一致</li>
+                            <li>Colony name created here will have to correspond with the idc attribute in the server.properties on the machine</li>
                         </ul>
                     </div>
                     <form class="form-horizontal" name="clusterForm" valdr-type="Cluster" ng-show="step == 1"
@@ -53,7 +53,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
                                 <apollorequiredfield></apollorequiredfield>
-                                应用AppId</label>
+                                ApplicationAppId</label>
                             <div class="col-sm-6">
                                 <label class="form-control-static" ng-bind="appId"></label>
                             </div>
@@ -61,16 +61,16 @@
                         <div class="form-group" valdr-form-group>
                             <label class="col-sm-2 control-label">
                                 <apollorequiredfield></apollorequiredfield>
-                                集群名称</label>
+                                Colony Name</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="clusterName" ng-model="clusterName">
-                                <small>(部署集群如:SHAJQ,SHAOY 或自定义集群如:SHAJQ-xx,SHAJQ-yy)</small>
+                                <small>(Deploy the colony, for example:SHAJQ,SHAOY or customize the colony, for example:SHAJQ-xx,SHAJQ-yy)</small>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">
                                 <apollorequiredfield></apollorequiredfield>
-                                选择环境</label>
+                                Select Environment</label>
                             <div class="col-sm-5">
                                 <table class="table table-hover" style="width: 100px">
                                     <tbody>
@@ -89,14 +89,14 @@
                             <div class="col-sm-offset-2 col-sm-10">
 
                                 <button type="submit" class="btn btn-primary"
-                                        ng-disabled="clusterForm.$invalid || submitBtnDisabled">提交
+                                        ng-disabled="clusterForm.$invalid || submitBtnDisabled">Submit
                                 </button>
                             </div>
                         </div>
                     </form>
                     <div class="row text-center" ng-show="step == 2">
                         <img src="img/sync-succ.png" style="height: 100px; width: 100px">
-                        <h3>创建成功!</h3>
+                        <h3>Created Successfully!</h3>
                     </div>
                 </div>
             </div>

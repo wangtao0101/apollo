@@ -61,7 +61,7 @@ function releaseModalDirective(toastr, AppUtil, EventManager, ReleaseService, Na
                                        scope.isEmergencyPublish).then(
                     function (result) {
                         AppUtil.hideModal('#releaseModal');
-                        toastr.success("发布成功");
+                        toastr.success("Release Succeeded");
 
                         scope.releaseBtnDisabled = false;
 
@@ -72,7 +72,7 @@ function releaseModalDirective(toastr, AppUtil, EventManager, ReleaseService, Na
 
                     }, function (result) {
                         scope.releaseBtnDisabled = false;
-                        toastr.error(AppUtil.errorMsg(result), "发布失败");
+                        toastr.error(AppUtil.errorMsg(result), "Release Failed");
 
                     }
                 );
@@ -90,7 +90,7 @@ function releaseModalDirective(toastr, AppUtil, EventManager, ReleaseService, Na
                                            scope.isEmergencyPublish).then(
                     function (result) {
                         AppUtil.hideModal('#releaseModal');
-                        toastr.success("灰度发布成功");
+                        toastr.success("Gray release succeeded");
 
                         scope.releaseBtnDisabled = false;
 
@@ -117,7 +117,7 @@ function releaseModalDirective(toastr, AppUtil, EventManager, ReleaseService, Na
 
                     }, function (result) {
                         scope.releaseBtnDisabled = false;
-                        toastr.error(AppUtil.errorMsg(result), "灰度发布失败");
+                        toastr.error(AppUtil.errorMsg(result), "Gray release failed");
 
                     });
             }
@@ -135,7 +135,7 @@ function releaseModalDirective(toastr, AppUtil, EventManager, ReleaseService, Na
                                                              scope.toReleaseNamespace.mergeAfterDeleteBranch)
                     .then(function (result) {
 
-                        toastr.success("全量发布成功");
+                        toastr.success("Full dose release succeeded");
 
                         EventManager.emit(EventManager.EventType.REFRESH_NAMESPACE,
                                           {
@@ -143,7 +143,7 @@ function releaseModalDirective(toastr, AppUtil, EventManager, ReleaseService, Na
                                           })
 
                     }, function (result) {
-                        toastr.error(AppUtil.errorMsg(result), "全量发布失败");
+                        toastr.error(AppUtil.errorMsg(result), "Full dose release failed");
                     });
 
                 AppUtil.hideModal('#releaseModal');

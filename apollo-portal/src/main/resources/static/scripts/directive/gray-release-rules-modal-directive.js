@@ -35,7 +35,7 @@ function rulesModalDirective(toastr, AppUtil, EventManager, InstanceService) {
 
 
                                        $('.rules-ip-selector').select2({
-                                                                           placeholder: "从实例列表中选择",
+                                                                           placeholder: "Select from list of examples",
                                                                            allowClear: true
                                                                        });
 
@@ -73,7 +73,7 @@ function rulesModalDirective(toastr, AppUtil, EventManager, InstanceService) {
                 if (newIps && newIps.length > 0) {
                     newIps.forEach(function (IP) {
                         if (!AppUtil.checkIPV4(IP)) {
-                            toastr.error("不合法的IP地址:" + IP);
+                            toastr.error("Illegal IP address:" + IP);
                         } else if (oldIPs.indexOf(IP) < 0) {
                             oldIPs.push(IP);
                         }
@@ -102,7 +102,7 @@ function rulesModalDirective(toastr, AppUtil, EventManager, InstanceService) {
                 scope.completeEditBtnDisable = true;
 
                 if (!branch.editingRuleItem.clientAppId) {
-                    toastr.error("灰度的AppId不能为空");
+                    toastr.error("AppId of the gray cannot be null");
                     scope.completeEditBtnDisable = false;
                     return;
                 }
@@ -111,7 +111,7 @@ function rulesModalDirective(toastr, AppUtil, EventManager, InstanceService) {
                     var errorRuleItem = false;
                     branch.rules.ruleItems.forEach(function (ruleItem) {
                         if (ruleItem.clientAppId == branch.editingRuleItem.clientAppId) {
-                            toastr.error("已经存在AppId=" + branch.editingRuleItem.clientAppId + "的规则");
+                            toastr.error("AppId already existed=" + branch.editingRuleItem.clientAppId + "of the rules");
                             errorRuleItem = true;
                         }
                     });
@@ -123,7 +123,7 @@ function rulesModalDirective(toastr, AppUtil, EventManager, InstanceService) {
 
                 if (!branch.editingRuleItem.ApplyToAllInstances) {
                     if (branch.editingRuleItem.draftIpList.length == 0) {
-                        toastr.error("IP列表不能为空");
+                        toastr.error("The list of IP cannot be null");
                         scope.completeEditBtnDisable = false;
                         return;
                     } else {

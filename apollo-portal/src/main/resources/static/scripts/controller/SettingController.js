@@ -49,7 +49,7 @@ function SettingController($scope, $location, toastr,
                 organizations.push(org);
             });
             $orgWidget.select2({
-                                   placeholder: '请选择部门',
+                                   placeholder: 'Please select department',
                                    width: '100%',
                                    data: organizations
                                });
@@ -100,7 +100,7 @@ function SettingController($scope, $location, toastr,
     function assignMasterRoleToUser() {
         var user = $('.' + $scope.userSelectWidgetId).select2('data')[0];
         if (!user) {
-            toastr.warning("请选择用户");
+            toastr.warning("Please select user");
             return;
         }
         var toAssignMasterRoleUser = user.id;
@@ -109,12 +109,12 @@ function SettingController($scope, $location, toastr,
                                              toAssignMasterRoleUser)
             .then(function (result) {
                 $scope.submitBtnDisabled = false;
-                toastr.success("添加成功");
+                toastr.success("Added Successfully");
                 $scope.appRoleUsers.masterUsers.push({userId: toAssignMasterRoleUser});
                 $('.' + $scope.userSelectWidgetId).select2("val", "");
             }, function (result) {
                 $scope.submitBtnDisabled = false;
-                toastr.error(AppUtil.errorMsg(result), "添加失败");
+                toastr.error(AppUtil.errorMsg(result), "Failed to add");
             });
     }
 
@@ -125,10 +125,10 @@ function SettingController($scope, $location, toastr,
         }
         PermissionService.remove_master_role($scope.pageContext.appId, user)
             .then(function (result) {
-                toastr.success("删除成功");
+                toastr.success("Deleted Successfully");
                 removeUserFromList($scope.appRoleUsers.masterUsers, user);
             }, function (result) {
-                toastr.error(AppUtil.errorMsg(result), "删除失败");
+                toastr.error(AppUtil.errorMsg(result), "Deletion Failed");
             });
     }
 
@@ -162,7 +162,7 @@ function SettingController($scope, $location, toastr,
         var selectedOrg = $orgWidget.select2('data')[0];
 
         if (!selectedOrg.id) {
-            toastr.warning("请选择部门");
+            toastr.warning("Please select department");
             return;
         }
 
@@ -172,13 +172,13 @@ function SettingController($scope, $location, toastr,
         // owner
         var owner = $('.ownerSelector').select2('data')[0];
         if (!owner) {
-            toastr.warning("请选择应用负责人");
+            toastr.warning("Please select application leader");
             return;
         }
         app.ownerName = owner.id;
 
         AppService.update(app).then(function (app) {
-            toastr.success("修改成功");
+            toastr.success("Modified Successfully");
             initApplication();
             $scope.display.app.edit = false;
             $scope.submitBtnDisabled = false;

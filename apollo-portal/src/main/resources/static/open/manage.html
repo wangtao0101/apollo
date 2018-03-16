@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" media='all' href="../vendor/angular/loading-bar.min.css">
     <link rel="stylesheet" type="text/css" href="../styles/common-style.css">
     <link rel="stylesheet" type="text/css" href="../vendor/select2/select2.min.css">
-    <title>开放平台</title>
+    <title>Open Platform</title>
 </head>
 
 <body>
@@ -23,9 +23,9 @@
         <section class="panel-body" ng-show="isRootUser">
             <!--project admin-->
             <section class="row">
-                <h5>创建第三方应用
+                <h5>Create a third-party application
                     <small>
-                        (说明: 第三方应用可以通过Apollo开放平台来对配置进行管理)
+                        (Notice: A third-party application may manage the configuration through the open platform of Apollo)
                     </small>
                 </h5>
                 <hr>
@@ -33,13 +33,13 @@
                     <div class="form-group" valdr-form-group>
                         <label class="col-sm-2 control-label">
                             <apollorequiredfield></apollorequiredfield>
-                            第三方应用ID</label>
+                            Third-party application ID</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" ng-model="consumer.appId">
-                            <small>(创建前请先查询第三方应用是否已经申请过)</small>
+                            <small>(Please check if the third-party application has already been applied for before creatinig)</small>
                         </div>
                         <div class="col-sm-1">
-                            <button class="btn btn-info" ng-click="getTokenByAppId()">查询</button>
+                            <button class="btn btn-info" ng-click="getTokenByAppId()">Check</button>
                         </div>
                         <div class="col-sm-6">
                             <h4 style="color: red"
@@ -50,7 +50,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">
                             <apollorequiredfield></apollorequiredfield>
-                            部门</label>
+                            Department</label>
                         <div class="col-sm-3">
                             <select id="organization">
                                 <option></option>
@@ -60,16 +60,16 @@
                     <div class="form-group" valdr-form-group>
                         <label class="col-sm-2 control-label">
                             <apollorequiredfield></apollorequiredfield>
-                            第三方应用名称</label>
+                            Name of the third-party application</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" ng-model="consumer.name">
-                            <small>(建议格式 xx-yy-zz 例:apollo-server)</small>
+                            <small>(Recommended Format xx-yy-zz for example:apollo-server)</small>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">
                             <apollorequiredfield></apollorequiredfield>
-                            项目负责人</label>
+                            Project Leader</label>
                         <div class="col-sm-6 J_ownerSelectorPanel">
                             <apollouserselector apollo-id="'ownerSelector'"></apollouserselector>
                         </div>
@@ -80,7 +80,7 @@
                             <button type="submit" class="btn btn-primary"
                                     ng-disabled="submitBtnDisabled"
                                     ng-click="createConsumer()">
-                                创建
+                                Create
                             </button>
                         </div>
                     </div>
@@ -88,9 +88,9 @@
             </section>
 
             <section class="row">
-                <h5>赋权
+                <h5>Empowerment
                     <small>
-                        (Namespace级别权限包括: 修改、发布Namespace。应用级别权限包括: 创建Namespace、修改或发布应用下任何Namespace)
+                        (The level permission of Namespace contains: modifying, releasing Namespace. The level permission of application conatins: creating Namespace, modifying or releasing any Namespace of that application)
                     </small>
                 </h5>
                 <hr>
@@ -107,22 +107,22 @@
                     <div class="form-group" valdr-form-group>
                         <label class="col-sm-2 control-label">
                             <apollorequiredfield></apollorequiredfield>
-                            被管理的AppId</label>
+                            Managed AppId</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" ng-model="consumerRole.appId" required>
                         </div>
                     </div>
                     <div class="form-group" valdr-form-group>
                         <label class="col-sm-2 control-label">
-                            被管理的Namespace</label>
+                            Managed Namespace</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" ng-model="consumerRole.namespaceName">
-                            <small>(非properties类型的namespace请加上类型后缀，例如apollo.xml)</small>
+                            <small>(Please add a type suffix to Namespace that is not properties, such as apollo.xml)</small>
                         </div>
                     </div>
                     <div class="form-group" valdr-form-group>
                         <label class="col-sm-2 control-label">
-                            授权类型
+                            Authentication Type
                         </label>
                         <div class="col-sm-3">
                             <label class="radio-inline">
@@ -139,7 +139,7 @@
                         <div class="col-sm-offset-2 col-sm-9">
                             <button type="submit" class="btn btn-primary"
                                     ng-disabled="submitBtnDisabled">
-                                提交
+                                Submit
                             </button>
                         </div>
                     </div>
@@ -150,7 +150,7 @@
         </section>
 
         <section class="panel-body text-center" ng-if="!isRootUser">
-            <h4>当前页面只对Apollo管理员开放</h4>
+            <h4>Current page is only open for Apollo administrators</h4>
         </section>
 
     </div>

@@ -410,7 +410,7 @@ function directive($window, toastr, AppUtil, EventManager, PermissionService, Na
                         }
                         namespace.commitPage += 1;
                     }, function (result) {
-                        toastr.error(AppUtil.errorMsg(result), "加载修改历史记录出错");
+                        toastr.error(AppUtil.errorMsg(result), "An error has occurred while loading the history modificaion");
                     });
             }
 
@@ -556,7 +556,7 @@ function directive($window, toastr, AppUtil, EventManager, PermissionService, Na
                         }
 
                     }, function (result) {
-                        toastr.error(AppUtil.errorMsg(result), "加载灰度规则出错");
+                        toastr.error(AppUtil.errorMsg(result), "An error has occurred while loading the gray rules");
                     });
 
             }
@@ -590,7 +590,7 @@ function directive($window, toastr, AppUtil, EventManager, PermissionService, Na
                 branch.rules.ruleItems.forEach(function (item, index) {
                     if (item.clientAppId == ruleItem.clientAppId) {
                         branch.rules.ruleItems.splice(index, 1);
-                        toastr.success("删除成功");
+                        toastr.success("Deleted Successfully");
                     }
                 });
 
@@ -606,7 +606,7 @@ function directive($window, toastr, AppUtil, EventManager, PermissionService, Na
                                                              branch.rules
                 )
                     .then(function (result) {
-                        toastr.success('灰度规则更新成功');
+                        toastr.success('Gray rules updated successfully');
 
                         //show tips if branch has not release configs
                         if (branch.itemModifiedCnt) {
@@ -618,7 +618,7 @@ function directive($window, toastr, AppUtil, EventManager, PermissionService, Na
                         }, 1500);
 
                     }, function (result) {
-                        AppUtil.showErrorMsg(result, "灰度规则更新失败");
+                        AppUtil.showErrorMsg(result, "Gray rules update failed");
                     })
             }
 
@@ -627,13 +627,13 @@ function directive($window, toastr, AppUtil, EventManager, PermissionService, Na
                     return;
                 }
                 namespace.isTextEditing = !namespace.isTextEditing;
-                if (namespace.isTextEditing) {//切换为编辑状态
+                if (namespace.isTextEditing) {//Switch to editting status
                     namespace.commited = false;
                     namespace.backupText = namespace.text;
                     namespace.editText = parseModel2Text(namespace);
 
                 } else {
-                    if (!namespace.commited) {//取消编辑,则复原
+                    if (!namespace.commited) {//Cancel the edition and restore
                         namespace.text = namespace.backupText;
                     }
                 }
@@ -668,7 +668,7 @@ function directive($window, toastr, AppUtil, EventManager, PermissionService, Na
                                            namespace.baseInfo.namespaceName,
                                            model).then(
                     function (result) {
-                        toastr.success("更新成功, 如需生效请发布");
+                        toastr.success("Updated Successfully, please release it if it is needed to become effective");
                         //refresh all namespace items
                         EventManager.emit(EventManager.EventType.REFRESH_NAMESPACE,
                                           {
@@ -677,7 +677,7 @@ function directive($window, toastr, AppUtil, EventManager, PermissionService, Na
                         return true;
 
                     }, function (result) {
-                        toastr.error(AppUtil.errorMsg(result), "更新失败");
+                        toastr.error(AppUtil.errorMsg(result), "Update Failed");
                         namespace.commitChangeBtnDisabled = false;
                         return false;
                     }
@@ -698,7 +698,7 @@ function directive($window, toastr, AppUtil, EventManager, PermissionService, Na
                     return "";
                 }
 
-                //文件模式
+                //File Mode
                 if (!namespace.isPropertiesFormat) {
                     return parseNotPropertiesText(namespace);
                 } else {

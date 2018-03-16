@@ -35,7 +35,7 @@ function rollbackModalDirective(AppUtil, EventManager, ReleaseService, toastr) {
                                                   0, 2)
                     .then(function (result) {
                         if (result.length <= 1) {
-                            toastr.error("没有可以回滚的发布历史");
+                            toastr.error("No release history for rollback");
                             return;
                         }
                         scope.toRollbackNamespace.firstRelease = result[0];
@@ -57,7 +57,7 @@ function rollbackModalDirective(AppUtil, EventManager, ReleaseService, toastr) {
                 ReleaseService.rollback(scope.env,
                                         scope.toRollbackNamespace.firstRelease.id)
                     .then(function (result) {
-                        toastr.success("回滚成功");
+                        toastr.success("Rollback Succeeded");
                         scope.toRollbackNamespace.rollbackBtnDisabled = false;
                         AppUtil.hideModal('#rollbackModal');
                         EventManager.emit(EventManager.EventType.REFRESH_NAMESPACE,
@@ -66,7 +66,7 @@ function rollbackModalDirective(AppUtil, EventManager, ReleaseService, toastr) {
                                           });
                     }, function (result) {
                         scope.toRollbackNamespace.rollbackBtnDisabled = false;
-                        AppUtil.showErrorMsg(result, "回滚失败");
+                        AppUtil.showErrorMsg(result, "Rollback Failed");
                     })
             }
 

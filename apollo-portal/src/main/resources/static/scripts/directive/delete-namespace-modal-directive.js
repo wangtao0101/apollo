@@ -50,7 +50,7 @@ function deleteNamespaceModalDirective($window, $q, toastr, AppUtil, EventManage
 
             function checkNotPrivateNamespace(namespace) {
                 if (!namespace.isPublic) {
-                    toastr.error("不能删除私有的Namespace", "删除失败");
+                    toastr.error("Unable to delete private Namespace", "Deletion Failed");
                     return false;
                 }
 
@@ -81,8 +81,8 @@ function deleteNamespaceModalDirective($window, $q, toastr, AppUtil, EventManage
                             scope.isAppMasterUser = isAppMasterUser;
 
                             if (!isAppMasterUser) {
-                                toastr.error("您没有项目管理员权限，只有管理员才能删除Namespace，请找项目管理员 [" + scope.masterUsers.join("，")
-                                             + "] 删除Namespace", "删除失败");
+                                toastr.error("You do not have the administrator permission. Only administrators may delete Namespace，please contact project administrators. [" + scope.masterUsers.join("，")
+                                             + "] Delete Namespace", "Deletion Failed");
                                 d.reject();
                             } else {
                                 d.resolve();
@@ -162,14 +162,14 @@ function deleteNamespaceModalDirective($window, $q, toastr, AppUtil, EventManage
                                                  toDeleteNamespace.baseInfo.clusterName,
                                                  toDeleteNamespace.baseInfo.namespaceName)
                     .then(function () {
-                        toastr.success("删除成功");
+                        toastr.success("Deleted Successfully");
 
                         setTimeout(function () {
                             $window.location.reload();
                         }, 1000);
 
                     }, function (result) {
-                        AppUtil.showErrorMsg(result, "删除失败");
+                        AppUtil.showErrorMsg(result, "Deletion Failed");
                     })
 
             }

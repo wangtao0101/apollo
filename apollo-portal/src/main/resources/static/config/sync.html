@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html ng-app="sync_item">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../vendor/angular/angular-toastr-1.4.1.min.css">
     <link rel="stylesheet" type="text/css" media='all' href="../vendor/angular/loading-bar.min.css">
     <link rel="stylesheet" type="text/css" href="../styles/common-style.css">
-    <title>同步配置</title>
+    <title>Synchronize configuration</title>
 </head>
 
 <body>
@@ -20,23 +20,22 @@
         <header class="panel-heading">
             <div class="row">
                 <div class="col-md-7">
-                    <h4 class="modal-title">同步配置
-                        <small ng-show="syncItemStep == 1">(第一步:选择同步信息)</small>
-                        <small ng-show="syncItemStep == 2">(第二步:检查Diff)</small>
+                    <h4 class="modal-title">Synchronize configuration
+                        <small ng-show="syncItemStep == 1">(First Step:Select synchronization information)</small>
+                        <small ng-show="syncItemStep == 2">(Second Step:Check Diff)</small>
                     </h4>
                 </div>
                 <div class="col-md-5 text-right">
                     <button type="button" class="btn btn-primary" ng-show="syncItemStep > 1 && syncItemStep < 3"
-                            ng-click="syncItemNextStep(-1)">上一步
-                    </button>
+                            ng-click="syncItemNextStep(-1)">Last Step                    </button>
                     <button type="button" class="btn btn-primary" ng-show="syncItemStep < 2"
-                            ng-click="diff()">下一步
+                            ng-click="diff()">Next Step
                     </button>
                     <button type="button" class="btn btn-success" ng-show="syncItemStep == 2 && hasDiff"
-                            ng-click="syncItems()" ng-disabled="syncBtnDisabled">同步
+                            ng-click="syncItems()" ng-disabled="syncBtnDisabled">Synchronize
                     </button>
                     <button type="button" class="btn btn-info" data-dismiss="modal"
-                            ng-click="backToAppHomePage()">返回到项目首页
+                            ng-click="backToAppHomePage()">Return to Project Homepage
                     </button>
                 </div>
             </div>
@@ -46,13 +45,13 @@
                 <div class="alert-info alert no-radius">
                     <strong>Tips:</strong>
                     <ul>
-                        <li>通过同步配置功能，可以使多个环境、集群间的配置保持一致</li>
-                        <li>需要注意的是，同步完之后需要发布后才会对应用生效</li>
+                        <li>Through configuration synchronization, the configuration of several environments and colonies may be corresponding</li>
+                        <li>Please mind, the synchronization will not be operant to applications until released </li>
                     </ul>
                 </div>
                 <div class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">同步的Namespace</label>
+                        <label class="col-sm-2 control-label">Synchronized Namespace</label>
                         <div class="col-sm-6">
                             <h4 ng-bind="pageContext.namespaceName"></h4>
                         </div>
@@ -60,7 +59,7 @@
                 </div>
                 <div class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">同步到那个集群</label>
+                        <label class="col-sm-2 control-label">Synchronize to the colony</label>
                         <div class="col-sm-6">
                             <apolloclusterselector apollo-app-id="pageContext.appId" apollo-default-all-checked="true"
                                                    apollo-select="collectSelectedClusters"
@@ -75,14 +74,14 @@
             <div class="row" ng-show="syncItemStep == 1" style="margin-top: 10px;">
                 <div class="form-horizontal">
                     <div class="col-sm-2 text-right">
-                        <label class="control-label">需要同步的配置</label>
+                        <label class="control-label">Require synchronized configuration</label>
                     </div>
                     <div class="col-sm-10">
                         <div class="row text-right" style="margin-bottom: 5px; margin-right: 0px;">
-                            按最后更新时间过滤
-                            开始时间:<input type="date" ng-model="filterBeginTime"> 结束时间:  <input type="date" ng-model="filterEndTime">
-                            <button class="btn btn-sm btn-primary" ng-click="filter()">过滤</button>
-                            <button class="btn btn-sm btn-default" ng-click="resetFilter()">重置</button>
+                            Filter by the last update time
+                            Start Time:<input type="date" ng-model="filterBeginTime"> End Time:  <input type="date" ng-model="filterEndTime">
+                            <button class="btn btn-sm btn-primary" ng-click="filter()">Filter</button>
+                            <button class="btn btn-sm btn-default" ng-click="resetFilter()">Reset</button>
                         </div>
                         <table class="table table-bordered table-striped table-hover">
                             <thead>
@@ -133,15 +132,15 @@
             <!--step 2-->
             <div class="row" ng-show="syncItemStep == 2" ng-repeat="clusterDiff in clusterDiffs">
                 <h4 class="text-center">
-                    环境:<span ng-bind="clusterDiff.namespace.env"></span>
-                    集群:<span ng-bind="clusterDiff.namespace.clusterName"></span>
+                    Environment:<span ng-bind="clusterDiff.namespace.env"></span>
+                    Colony:<span ng-bind="clusterDiff.namespace.clusterName"></span>
                     <span ng-show="!clusterDiff.extInfo">Namespace:{{pageContext.namespaceName}}</span>
                 </h4>
                 <div class="text-center"
                      ng-show="clusterDiff.diffs.createItems.length + clusterDiff.diffs.updateItems.length == 0 || clusterDiff.extInfo">
-                    <span ng-show="clusterDiff.diffs.createItems.length + clusterDiff.diffs.updateItems.length == 0 && !clusterDiff.extInfo">没有更新的配置</span>
+                    <span ng-show="clusterDiff.diffs.createItems.length + clusterDiff.diffs.updateItems.length == 0 && !clusterDiff.extInfo">No configuration updated</span>
                     <span ng-show="clusterDiff.extInfo" ng-bind="clusterDiff.extInfo"></span>
-                    ,忽略同步
+                    ,Ignore the synchronization
                 </div>
 
                 <div class="row" style="margin-top: 10px;"
@@ -153,33 +152,33 @@
                                 <tr>
                                     <td>Type</td>
                                     <td>Key</td>
-                                    <td>同步前</td>
-                                    <td>同步后</td>
+                                    <td>Before synchronization</td>
+                                    <td>After synchronization</td>
                                     <td>Comment</td>
-                                    <td>操作</td>
+                                    <td>Operate</td>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="createItem in clusterDiff.diffs.createItems">
-                                    <td width="5%">新增</td>
+                                    <td width="5%">Add</td>
                                     <td width="15%" ng-bind="createItem.key"></td>
                                     <td width="30%"></td>
                                     <td width="30%" ng-bind="createItem.value"></td>
                                     <td width="15%" ng-bind="createItem.comment"></td>
                                     <td width="5%">
-                                        <a data-tooltip="tooltip" data-placement="bottom" title="不同步该配置"
-                                           ng-click="removeItem(clusterDiff.diffs, 'create', createItem)">删除</a>
+                                        <a data-tooltip="tooltip" data-placement="bottom" title="No synchronizing this configuration"
+                                           ng-click="removeItem(clusterDiff.diffs, 'create', createItem)">Delete</a>
                                     </td>
                                 </tr>
                                 <tr ng-repeat="updateItem in clusterDiff.diffs.updateItems">
-                                    <td width="5%">更新</td>
+                                    <td width="5%">Update</td>
                                     <td width="15%" ng-bind="updateItem.key"></td>
                                     <td width="30%" ng-bind="updateItem.oldValue"></td>
                                     <td width="30%" ng-bind="updateItem.value"></td>
                                     <td width="15%" ng-bind="updateItem.comment"></td>
                                     <td width="5%">
-                                        <a data-tooltip="tooltip" data-placement="bottom" title="不同步该配置"
-                                           ng-click="removeItem(clusterDiff.diffs, 'update', updateItem)">删除</a>
+                                        <a data-tooltip="tooltip" data-placement="bottom" title="No synchronizing this configuration"
+                                           ng-click="removeItem(clusterDiff.diffs, 'update', updateItem)">Delete</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -194,11 +193,11 @@
             <!--step 3-->
             <div class="row text-center" ng-show="syncItemStep == 3 && syncSuccess">
                 <img src="../img/sync-succ.png" style="height: 100px; width: 100px">
-                <h3>同步成功!</h3>
+                <h3>Synchronization Succeeded!</h3>
             </div>
             <div class="row text-center" ng-show="syncItemStep == 3 && !syncSuccess">
                 <img src="../img/sync-error.png" style="height: 100px; width: 100px">
-                <h3>同步失败!</h3>
+                <h3>Synchornization Failed!</h3>
             </div>
 
         </div>

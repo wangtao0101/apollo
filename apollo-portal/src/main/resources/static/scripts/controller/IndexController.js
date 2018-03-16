@@ -132,7 +132,7 @@ function IndexController($scope, $window, toastr, AppUtil, AppService, UserServi
 
     function toTop(favoriteId) {
         FavoriteService.toTop(favoriteId).then(function () {
-            toastr.success("置顶成功");
+            toastr.success("Sticky Succeeded");
             refreshFavorites();
 
         })
@@ -140,7 +140,7 @@ function IndexController($scope, $window, toastr, AppUtil, AppService, UserServi
 
     function deleteFavorite(favoriteId) {
         FavoriteService.deleteFavorite(favoriteId).then(function () {
-            toastr.success("取消收藏成功");
+            toastr.success("Deleted from Favorites successfully");
             refreshFavorites();
         })
     }
