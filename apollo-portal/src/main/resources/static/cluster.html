@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
     <link rel="stylesheet" type="text/css" media='all' href="vendor/angular/loading-bar.min.css">
     <link rel="stylesheet" type="text/css" href="styles/common-style.css">
-    <title>New Colony</title>
+    <title>New Cluster</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
                 <header class="panel-heading">
                     <div class="row">
                         <div class="col-md-6">
-                            <h4>Create Colony</h4>
+                            <h4>Create Cluster</h4>
                         </div>
                         <div class="col-md-6 text-right">
                             <a type="button" class="btn btn-info" href="/config.html?#/appid={{appId}}">Return to Project Homepage
@@ -39,13 +39,13 @@
                     <div class="alert alert-info no-radius" role="alert">
                         <strong>Tips:</strong>
                         <ul>
-                            <li>By adding colonies,one same program may adopt different configuration in different colonies (for example, in different data centers)</li>
-                            <li>If different colonies have adopeted same configuration, it will not be necessary to create colonies</li>
+                            <li>By adding clusters,one same program may adopt different configuration in different clusters (for example, in different data centers)</li>
+                            <li>If different clusters have adopeted the same configuration, it will be unnecessary to create clusters</li>
                             <li>
-                                Apollo will tacitly abstract from files/opt/settings/server.properties(linux)orC:\opt\settings\server.properties(windows)in the machine the idc attribute as the name of colony
+                                Apollo will tacitly abstract from files/opt/settings/server.properties(linux)orC:\opt\settings\server.properties(windows)in the machine the idc attribute as the name of cluster
 ,                                such as SHAJQ（Jinqiao Data Center）,SHAOY（Ouyang Data Center)
                             </li>
-                            <li>Colony name created here will have to correspond with the idc attribute in the server.properties on the machine</li>
+                            <li>Cluster name created here will have to correspond with the idc attribute in the server.properties on the machine</li>
                         </ul>
                     </div>
                     <form class="form-horizontal" name="clusterForm" valdr-type="Cluster" ng-show="step == 1"
@@ -61,10 +61,10 @@
                         <div class="form-group" valdr-form-group>
                             <label class="col-sm-2 control-label">
                                 <apollorequiredfield></apollorequiredfield>
-                                Colony Name</label>
+                                Cluster Name</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="clusterName" ng-model="clusterName">
-                                <small>(Deploy the colony, for example:SHAJQ,SHAOY or customize the colony, for example:SHAJQ-xx,SHAJQ-yy)</small>
+                                <small>(Deploy the cluster, for example:SHAJQ,SHAOY or customize the cluster, for example:SHAJQ-xx,SHAJQ-yy)</small>
                             </div>
                         </div>
                         <div class="form-group">

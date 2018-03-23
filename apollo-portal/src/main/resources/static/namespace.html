@@ -41,16 +41,16 @@
                     <div class="alert alert-info no-radius">
                         <strong>Tips:</strong>
                         <ul ng-show="type == 'link'">
-                            <li>Applications may cover the configuration of public Namespace through relating to them</li>
-                            <li>If applications are not needed to cover the configuration of public Namespace, then it will not be necessary to relate to public Namespace</li>
+                            <li>Applications can cover the configuration of public Namespace through relating to them</li>
+                            <li>If it is not necessary for applications to cover the configuration of public Namespace, then it will not be necessary to relate to public Namespace</li>
                         </ul>
                         <ul ng-show="type == 'create' && appNamespace.isPublic">
                             <li>Configuration of public Namespace could be read by any project</li>
                             <li>
-                                Through creating public Namespace, it could be achieved that the configuration of public components and the need of muiltiple applications to share one configuration
+                                Through creating public Namespace,the configuration of public components and the need of muiltiple applications to share one configuration  can be achieved.
                             </li>
-                            <li>If other applications need to cover the configuration of the public part, they may relate to the public Namespace and then configurate those need covering in the related Namespace</li>
-                            <li>If other applications do no need to cover the configuration of the public part, then it will not be necessary for them to relate to public Namespace</li>
+                            <li>If other applications need to cover the public configuration, they can relate to the public Namespace and then configurate those need covering in the related Namespace</li>
+                            <li>If other applications do no need to cover the public configuration, then it will not be necessary for them to relate to public Namespace</li>
                         </ul>
                         <ul ng-show="type == 'create' && !appNamespace.isPublic">
                             <li>Configuration of private Namespace can only be obtained by its belonging appilications</li>
@@ -84,7 +84,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">
                                     <apollorequiredfield></apollorequiredfield>
-                                    Select colony</label>
+                                    Select cluster</label>
                                 <div class="col-sm-6" valdr-form-group>
                                     <apolloclusterselector apollo-app-id="appId" apollo-default-all-checked="true"
                                                            apollo-select="collectSelectedClusters"></apolloclusterselector>

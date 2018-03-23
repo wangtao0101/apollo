@@ -72,7 +72,7 @@ namespace_module.controller("LinkNamespaceController",
                                  $scope.createNamespace = function () {
                                      if ($scope.type == 'link') {
                                          if (selectedClusters.length == 0) {
-                                             toastr.warning("Please select colony");
+                                             toastr.warning("Please select cluster");
                                              return;
                                          }
 

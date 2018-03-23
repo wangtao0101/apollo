@@ -36,7 +36,7 @@
                     <header class="panel-heading">
                         Environment List
                         <span class="pull-right"
-                              data-tooltip="tooltip" data-placement="bottom" title="By altering environments and colonies to manage the configuration of different environments and colonies">
+                              data-tooltip="tooltip" data-placement="bottom" title="By altering environments and clusters to manage the configuration of different environments and clusters">
                                     <img src="img/question.png" class="i-20"/>
                             </span>
                     </header>
@@ -116,14 +116,14 @@
                         </div>
                     </a>
 
-                    <apolloentrance apollo-title="'Add Colony'" apollo-img-src="'plus-orange'"
+                    <apolloentrance apollo-title="'Add Cluster'" apollo-img-src="'plus-orange'"
                                     apollo-href="'cluster.html?#/appid=' + pageContext.appId"
                                     ng-show="hasCreateClusterPermission"></apolloentrance>
 
                     <div class="list-group-item cursor-pointer hover" ng-click="showMasterPermissionTips()"
                          ng-show="!hasCreateClusterPermission">
                         <div class="row icon-text icon-plus-orange">
-                            <p class="btn-title">Add Colony</p>
+                            <p class="btn-title">Add Cluster</p>
                         </div>
                     </div>
 
@@ -152,7 +152,7 @@
          ng-controller="ConfigNamespaceController">
 
         <h4 class="text-center" ng-show="viewMode == 2">
-            Current Operating Environment:{{pageContext.env}}， Colony:{{pageContext.clusterName}}
+            Current Operating Environment:{{pageContext.env}}， Cluster:{{pageContext.clusterName}}
         </h4>
         <div class="alert alert-info alert-dismissible" role="alert"
              ng-show="(!hideTip || !hideTip[pageContext.appId][pageContext.clusterName]) && envMapClusters[pageContext.env]">
@@ -165,25 +165,25 @@
             <div ng-show="pageContext.clusterName == 'default'">
                 <strong>Please mind: </strong>All the examples that do not belong to
                 <span ng-bind="envMapClusters[pageContext.env]"></span>
-                the colony will adopt the configuration of the default colony (current page), and those belong to the colony
+                the cluster will adopt the configuration of the default cluster (current page), and those belong to the cluster
                 <span ng-bind="envMapClusters[pageContext.env]"></span>
-                will adopt the configuration of corresponding colony!
+                will adopt the configuration of corresponding cluster!
             </div>
 
             <!--custom cluster tip-->
             <div ng-show="pageContext.clusterName != 'default'">
                 <strong>Please mind:</strong>Examples
                 <span ng-bind="pageContext.clusterName"></span>
-                that belong to the colony will only adopt
+                that belong to the cluster will only adopt
                 <span ng-bind="pageContext.clusterName"></span>
-                the configuration of the colony (current page), and only when the corresponding namespace has not released any configuration will the examples adopt the configuration of the default colony.
+                the configuration of the cluster (current page), and only when the corresponding namespace has not released any configuration will the examples adopt the configuration of the default cluster.
             </div>
 
         </div>
 
         <div class="alert alert-info"
              ng-if="hasNotPublishNamespace">
-            <p><b>Pleasemind:</b> The following environments/colonies contain unreleased configurations; please release in time configurations that cannot be obtained through the Client.</p>
+            <p><b>Pleasemind:</b> The following environments/clusters contain unreleased configurations; please release in time configurations that cannot be obtained through the Client.</p>
             <p>
                 <mark ng-bind="namespacePublishInfo.join('，')"></mark>
             </p>
@@ -253,7 +253,7 @@
                              apollo-show-cancel-btn="false"></apolloconfirmdialog>
 
         <apolloconfirmdialog apollo-dialog-id="'masterNoPermissionDialog'" apollo-title="'Apply for release permission'"
-                             apollo-detail="'You are not the project administrator who has the only permmision to add colony and namespace.
+                             apollo-detail="'You are not the project administrator who has the only permmision to add cluster and namespace.
                                  If you require project administrator permission, please contact the project manager. ' + masterUsers + ' Assign project manager permission'"
                              apollo-show-cancel-btn="false"></apolloconfirmdialog>
 
@@ -316,7 +316,7 @@
                         <h4 class="modal-title">Gray Creation Notice</h4>
                     </div>
                     <div class="modal-body">
-                        Through creating gray version, you may perform gray test to some configuration<br>
+                        Through creating gray version, you can perform gray test to some configuration.<br>
                         The gray process is as listed:<br>
                         &nbsp;&nbsp;1.Create gray version <br>
                         &nbsp;&nbsp;2.Configurate gray configuration items<br>
@@ -326,7 +326,7 @@
                         <b>Full dose release</b>:The gray configuration should be combined with that of the major version and be released. All the Clients will adopt the combined configuration. <br>
                         <b>Discarding gray</b>:Delete the gray version, and all the Clients will return to the configuration of the major version.<br>
                         Attention:<br>
-                        &nbsp;&nbsp;1.If the gray version has already been gray released, after modifying the gray rules, it will become effective immediately without requiring a second gray release.<br>
+                        &nbsp;&nbsp;1.If the gray version has already been gray released, after modifying the gray rules, it will become effective immediately without a second gray release.<br>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

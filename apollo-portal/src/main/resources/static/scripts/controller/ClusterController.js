@@ -45,11 +45,11 @@ cluster_module.controller('ClusterController',
                                                                              name: $scope.clusterName,
                                                                              appId: $scope.appId
                                                                          }).then(function (result) {
-                                               toastr.success(env.name, "Colony successfully created!");
+                                               toastr.success(env.name, "Cluster successfully created!");
                                                $scope.step = 2;
                                                $scope.submitBtnDisabled = false;
                                            }, function (result) {
-                                               toastr.error(AppUtil.errorMsg(result), "Colony creation failed!");
+                                               toastr.error(AppUtil.errorMsg(result), "Cluster creation failed!");
                                                $scope.submitBtnDisabled = false;
                                            })
                                        }

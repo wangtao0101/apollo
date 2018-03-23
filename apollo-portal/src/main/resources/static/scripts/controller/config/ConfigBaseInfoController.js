@@ -160,7 +160,7 @@ function ConfigBaseInfoController($rootScope, $scope, $window, $location, toastr
 
                 var clusterNodes = [];
 
-                //If there is only one default colony under env, the colony list will not be showed
+                //If there is only one default cluster under env, the cluster list will not be showed
                 if (env.clusters && env.clusters.length == 1 && env.clusters[0].name
                                                                 == 'default') {
                     if ($rootScope.pageContext.env == env.env) {
@@ -185,7 +185,7 @@ function ConfigBaseInfoController($rootScope, $scope, $window, $location, toastr
 
                         clusterNode.text = cluster.name;
                         parentNode.push(node.text);
-                        clusterNode.tags = ['Colony'];
+                        clusterNode.tags = ['Cluster'];
                         clusterNode.parentNode = parentNode;
                         clusterNodes.push(clusterNode);
 

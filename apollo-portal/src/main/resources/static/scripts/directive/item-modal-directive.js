@@ -73,7 +73,7 @@ function itemModalDirective(toastr, $sce, AppUtil, EventManager, ConfigService) 
                             });
                     } else {
                         if (selectedClusters.length == 0) {
-                            toastr.error("Please select colony");
+                            toastr.error("Please select cluster");
                             scope.item.addItemBtnDisabled = false;
                             return;
                         }

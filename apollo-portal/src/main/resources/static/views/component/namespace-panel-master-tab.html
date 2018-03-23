@@ -15,7 +15,7 @@
                     <span class="glyphicon glyphicon-triangle-top small"
                           ng-show="!namespace.displayControl.show"></span>
                     <b class="namespace-name" ng-bind="namespace.viewName"
-                       data-tooltip="tooltip" data-placement="bottom" title="点击展开/收缩Namespace"></b>
+                       data-tooltip="tooltip" data-placement="bottom" title="Click to fold/unfold Namespace"></b>
 
                 </span>
                 <span class="label label-info no-radius namespace-label" ng-bind="namespace.format"></span>
@@ -151,7 +151,7 @@
                          ng-click="modifyByText(namespace)">
 
                     <button type="button" class="btn btn-default btn-sm"
-                            data-tooltip="tooltip" data-placement="bottom" title="Configurate according to the Key filter"
+                            data-tooltip="tooltip" data-placement="bottom" title="Filter the configuartion accroding to the key"
                             ng-show="namespace.viewType == 'table' && namespace.displayControl.currentOperateBranch == 'master'
                         && !namespace.isLinkedNamespace"
                             ng-click="toggleItemSearchInput(namespace)">
@@ -160,7 +160,7 @@
                     </button>
 
                     <button type="button" class="btn btn-default btn-sm J_tableview_btn"
-                            data-tooltip="tooltip" data-placement="bottom" title="Synchronize configuration among each environment"
+                            data-tooltip="tooltip" data-placement="bottom" title="Synchronize configuration among environments"
                             ng-click="goToSyncPage(namespace)"
                             ng-show="namespace.viewType == 'table' && namespace.displayControl.currentOperateBranch == 'master'
                              && namespace.hasModifyPermission && namespace.isPropertiesFormat">
@@ -193,7 +193,7 @@
                 <!--not link namespace-->
                 <div ng-if="!namespace.isLinkedNamespace">
                     <div class="search-input" ng-show="namespace.displayControl.showSearchInput">
-                        <input type="text" class="form-control" placeholder="输入key过滤"
+                        <input type="text" class="form-control" placeholder="Input Key to filter"
                                ng-model="namespace.searchKey"
                                ng-change="searchItems(namespace)">
                     </div>
@@ -779,18 +779,18 @@
                     <div class="row">
 
                         <div class="col-md-5 col-sm-5">
-                            <small>Example illustration:only examples that have visited Apollo in the latest day will be shown.</small>
+                            <small>Example illustration:only examples that have accessed Apollo in the latest day will be shown.</small>
                         </div>
                         <div class="col-md-7 col-sm-7 text-right">
                             <div class="btn-group btn-group-sm" role="group">
                                 <button type="button" class="btn btn-default"
                                         ng-class="{'btn-primary':namespace.instanceViewType == 'latest_release'}"
-                                        ng-click="switchInstanceViewType(namespace, 'latest_release')"> use examples that are most newly configurated
+                                        ng-click="switchInstanceViewType(namespace, 'latest_release')"> use the lastest configured examples
                                     <span class="badge" ng-bind="namespace.latestReleaseInstances.total"></span>
                                 </button>
                                 <button type="button" class="btn btn-default"
                                         ng-class="{'btn-primary':namespace.instanceViewType == 'not_latest_release'}"
-                                        ng-click="switchInstanceViewType(namespace, 'not_latest_release')">use examples that are not most newly configurated
+                                        ng-click="switchInstanceViewType(namespace, 'not_latest_release')">use the non-lastest-configured examples
                                     <span class="badge"
                                           ng-bind="namespace.instancesCount - namespace.latestReleaseInstances.total"></span>
                                 </button>

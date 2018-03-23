@@ -45,7 +45,7 @@
                 <div class="alert-info alert no-radius">
                     <strong>Tips:</strong>
                     <ul>
-                        <li>Through configuration synchronization, the configuration of several environments and colonies may be corresponding</li>
+                        <li>Through configuration synchronization, the configuration of several environments and cluster can be corresponded</li>
                         <li>Please mind, the synchronization will not be operant to applications until released </li>
                     </ul>
                 </div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Synchronize to the colony</label>
+                        <label class="col-sm-2 control-label">Synchronize to the cluster</label>
                         <div class="col-sm-6">
                             <apolloclusterselector apollo-app-id="pageContext.appId" apollo-default-all-checked="true"
                                                    apollo-select="collectSelectedClusters"
@@ -74,7 +74,7 @@
             <div class="row" ng-show="syncItemStep == 1" style="margin-top: 10px;">
                 <div class="form-horizontal">
                     <div class="col-sm-2 text-right">
-                        <label class="control-label">Require synchronized configuration</label>
+                        <label class="control-label">Configurations to be synchronized</label>
                     </div>
                     <div class="col-sm-10">
                         <div class="row text-right" style="margin-bottom: 5px; margin-right: 0px;">
@@ -133,7 +133,7 @@
             <div class="row" ng-show="syncItemStep == 2" ng-repeat="clusterDiff in clusterDiffs">
                 <h4 class="text-center">
                     Environment:<span ng-bind="clusterDiff.namespace.env"></span>
-                    Colony:<span ng-bind="clusterDiff.namespace.clusterName"></span>
+                    Cluster:<span ng-bind="clusterDiff.namespace.clusterName"></span>
                     <span ng-show="!clusterDiff.extInfo">Namespace:{{pageContext.namespaceName}}</span>
                 </h4>
                 <div class="text-center"

@@ -32,10 +32,10 @@ cluster_module.config(function (valdrProvider) {
                                          'clusterName': {
                                              'size': {
                                                  'max': 32,
-                                                 'message': 'Colony name should be no longer than 32 characters'
+                                                 'message': 'Cluster name should be no longer than 32 characters'
                                              },
                                              'required': {
-                                                 'message': 'Colony name cannot be null'
+                                                 'message': 'Cluster name cannot be null'
                                              }
                                          }
                                      }

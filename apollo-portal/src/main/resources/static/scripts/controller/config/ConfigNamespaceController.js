@@ -353,7 +353,7 @@ function controller($rootScope, $scope, toastr, AppUtil, EventManager, ConfigSer
                 var url = '/config.html?#/appid=' + appId + '&env=' + $scope.pageContext.env + '&cluster='
                           + clusterName;
 
-                namespaceTips.push("<a target='_blank' href=\'" + url + "\'>AppId = " + appId + ", colony = " + clusterName
+                namespaceTips.push("<a target='_blank' href=\'" + url + "\'>AppId = " + appId + ", cluster = " + clusterName
                                    + ", Namespace = " + namespace.namespaceName + "</a>");
             });
 

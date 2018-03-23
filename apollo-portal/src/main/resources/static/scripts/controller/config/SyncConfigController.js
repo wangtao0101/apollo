@@ -75,7 +75,7 @@ sync_item_module.controller("SyncItemController",
                                          return;
                                      }
                                      if (syncData.syncToNamespaces.length == 0) {
-                                         toastr.warning("Please select colony");
+                                         toastr.warning("Please select cluster");
                                          return;
                                      }
                                      $scope.hasDiff = false;
