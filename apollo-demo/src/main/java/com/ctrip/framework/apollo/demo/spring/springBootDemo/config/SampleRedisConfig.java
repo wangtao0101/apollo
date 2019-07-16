@@ -15,6 +15,8 @@ import javax.annotation.PostConstruct;
 
 /**
  * You may set up data like the following in Apollo:
+ * <br /><br />
+ * Properties Sample: application.properties
  * <pre>
  * redis.cache.enabled = true
  * redis.cache.expireSeconds = 100
@@ -26,10 +28,24 @@ import javax.annotation.PostConstruct;
  * redis.cache.someList[1] = d
  * </pre>
  *
- * To make <code>@ConditionalOnProperty</code> work properly, <code>apollo.bootstrap.enabled</code> should be set to true
- * and <code>redis.cache.enabled</code> should also be set to true.
+ * Yaml Sample: application.yaml
+ * <pre>
+ * redis:
+ *   cache:
+ *     enabled: true
+ *     expireSeconds: 100
+ *     clusterNodes: 1,2
+ *     commandTimeout: 50
+ *     someMap:
+ *       key1: a
+ *       key2: b
+ *     someList:
+ *     - c
+ *     - d
+ * </pre>
  *
- * @see resources/bootstrap.yml
+ * To make <code>@ConditionalOnProperty</code> work properly, <code>apollo.bootstrap.enabled</code> should be set to true
+ * and <code>redis.cache.enabled</code> should also be set to true. Check 'src/main/resources/application.yml' for more information.
  *
  * @author Jason Song(song_s@ctrip.com)
  */

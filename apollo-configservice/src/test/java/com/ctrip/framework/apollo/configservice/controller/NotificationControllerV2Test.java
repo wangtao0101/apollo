@@ -1,14 +1,5 @@
 package com.ctrip.framework.apollo.configservice.controller;
 
-import com.ctrip.framework.apollo.configservice.wrapper.DeferredResultWrapper;
-import com.ctrip.framework.apollo.core.dto.ApolloNotificationMessages;
-import com.google.common.base.Joiner;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-
 import com.ctrip.framework.apollo.biz.config.BizConfig;
 import com.ctrip.framework.apollo.biz.entity.ReleaseMessage;
 import com.ctrip.framework.apollo.biz.message.Topics;
@@ -16,14 +7,21 @@ import com.ctrip.framework.apollo.biz.utils.EntityManagerUtil;
 import com.ctrip.framework.apollo.configservice.service.ReleaseMessageServiceWithCache;
 import com.ctrip.framework.apollo.configservice.util.NamespaceUtil;
 import com.ctrip.framework.apollo.configservice.util.WatchKeysUtil;
+import com.ctrip.framework.apollo.configservice.wrapper.DeferredResultWrapper;
 import com.ctrip.framework.apollo.core.ConfigConsts;
 import com.ctrip.framework.apollo.core.dto.ApolloConfigNotification;
-
+import com.ctrip.framework.apollo.core.dto.ApolloNotificationMessages;
+import com.google.common.base.Joiner;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
+import com.google.gson.Gson;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.util.ReflectionTestUtils;
@@ -34,12 +32,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 /**
  * @author Jason Song(song_s@ctrip.com)
@@ -72,18 +66,13 @@ public class NotificationControllerV2Test {
 
   @Before
   public void setUp() throws Exception {
-    controller = new NotificationControllerV2();
     gson = new Gson();
+    controller = new NotificationControllerV2(
+        watchKeysUtil, releaseMessageService, entityManagerUtil, namespaceUtil, gson, bizConfig
+    );
 
     when(bizConfig.releaseMessageNotificationBatch()).thenReturn(100);
     when(bizConfig.releaseMessageNotificationBatchIntervalInMilli()).thenReturn(5);
-
-    ReflectionTestUtils.setField(controller, "releaseMessageService", releaseMessageService);
-    ReflectionTestUtils.setField(controller, "entityManagerUtil", entityManagerUtil);
-    ReflectionTestUtils.setField(controller, "namespaceUtil", namespaceUtil);
-    ReflectionTestUtils.setField(controller, "watchKeysUtil", watchKeysUtil);
-    ReflectionTestUtils.setField(controller, "gson", gson);
-    ReflectionTestUtils.setField(controller, "bizConfig", bizConfig);
 
     someAppId = "someAppId";
     someCluster = "someCluster";
@@ -342,11 +331,13 @@ public class NotificationControllerV2Test {
 
     controller.handleMessage(someReleaseMessage, Topics.APOLLO_RELEASE_TOPIC);
 
-    assertTrue(!anotherDeferredResult.hasResult());
+    //in batch mode, at most one of them should have result
+    assertFalse(deferredResult.hasResult() && anotherDeferredResult.hasResult());
 
     TimeUnit.MILLISECONDS.sleep(someBatchInterval * 10);
 
-    assertTrue(anotherDeferredResult.hasResult());
+    //now both of them should have result
+    assertTrue(deferredResult.hasResult() && anotherDeferredResult.hasResult());
   }
 
   private String transformApolloConfigNotificationsToString(
